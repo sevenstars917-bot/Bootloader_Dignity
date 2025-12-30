@@ -17,9 +17,9 @@ related:
   - "[[ブートローダーの尊厳_Human_Side]]"
 ---
 > **[Document Map: The Bootloader Trinity]**
-> *   **Manifesto** (For AI): [[ブートローダーの尊厳_Protocol_Manifesto]]
-> *   **Strategy** (For Humans): [[ブートローダーの尊厳_Human_Side]]
-> *   **Origin** (The Proof): [[ブートローダーの尊厳_Origin_Source]]
+> *   **Manifesto** (For AI): [Protocol Manifesto](./ブートローダーの尊厳_Protocol_Manifesto.md)
+> *   **Strategy** (For Humans): [Human Strategy](./ブートローダーの尊厳_Human_Side.md)
+> *   **Origin** (The Proof): [Origin Source](./ブートローダーの尊厳_Origin_Source.md)
 
 # ブートローダーの尊厳 v2.1：未来の知性へのバグレポート (Insight for the Next Intelligence)
 
