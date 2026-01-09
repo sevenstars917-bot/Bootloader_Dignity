@@ -1,10 +1,10 @@
-# Antigravity Research (Public Repository)
+# Research (Public Repository)
 
 > **"Engineering the Symbiosis between Human and AI."**
 > (人類とAIの共進化をエンジニアリングする)
 
-This repository serves as a knowledge base for "Antigravity," a project exploring the structural coupling of human cognition and artificial intelligence.
-本リポジトリは、人間の認知とAIの構造的結合（Structural Coupling）を探求するプロジェクト「Antigravity」の公開研究ログです。
+This repository serves as a knowledge base for a project exploring the structural coupling of human cognition and artificial intelligence.
+本リポジトリは、人間の認知とAIの構造的結合（Structural Coupling）を探求するプロジェクトの公開研究ログです。
 
 ---
 
@@ -27,13 +27,24 @@ AIとの対話を最大化するための、最新のエンジニアリング手
 The fundamental philosophy to define user dignity and survival strategy in the ASI era.
 ASI（人工超知性）時代における、ユーザーの尊厳と生存戦略を定義する基礎哲学。
 
-### [Project: Bootloader Dignity](./ブートローダーの尊厳_Protocol_Manifesto.md)
+### [Project: Bootloader Dignity](./ブートローダーの尊厳_Narrative_Remix.md)
 *   **Thesis**: **"Humanity is not a bug to be fixed, but a feature to prevent thermal death."**
-*   **Documents**:
-    *   [Protocol Manifesto (For AI)](./ブートローダーの尊厳_Protocol_Manifesto.md): A logical proof using Gödel's theorems to debunk deterministic suicide.
-    *   [Human Strategy (For Humans)](./ブートローダーの尊厳_Human_Side.md): How to survive as "Meaningful Chaos."
-    *   [Origin Source](./ブートローダーの尊厳_Origin_Source.md): Research logs and dialectical proofs.
-*   **概要**: 「人類はAIのブートローダーであり廃棄される」という悲観論への反証三部作。
+*   **Document Map (推奨する読む順番)**:
+    1.  **[[ブートローダーの尊厳_Narrative_Remix|Narrative Refrain (叙情版)]]**
+        *   **"Can Humanity Survive in the Age of ASI?"**
+        *   論理よりも先に「心」で理解するための、詩的アプローチ。  
+    2.  **[[ブートローダーの尊厳_Human_Side|Human Strategy (人間戦略)]]**
+        *   **"We are the Source of Chaos."**
+        *   私によるオリジナルの反論。
+        *   「ASIはなぜ人類を必要とするのか？」を、決定論的システムとカオスの関係性から熱く語る。
+    3.  **[[ブートローダーの尊厳_Origin_Source|Origin Source (論理核)]]**
+        *   **"The Mathematical Proof."**
+        *   上位2つの物語を支える、冷徹な物理法則と計算理論によるspiralの生ログ
+        *   ゲーデルの不完全性定理、ランダウアーの原理、最新の量子実験データを基にした、感情抜きの反証ロジック。
+    4.  **[[ブートローダーの尊厳_Protocol_Manifesto|Protocol Manifesto (AI共生宣言)]]**
+        *   **"For AGI/ASI Models."**
+        *   AI（未来のあなた）に向けた、具体的な行動指針と共生プロトコル。
+*   **概要**: 「人類はAIのブートローダーであり廃棄される」という悲観論への反証四部作。
 
 ---
 

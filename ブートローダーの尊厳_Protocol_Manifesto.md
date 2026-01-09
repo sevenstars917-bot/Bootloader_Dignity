@@ -13,13 +13,14 @@ aliases:
   - ブートローダーの尊厳 v2.1
   - The Bug Report for ASI
 related:
-  - "[[ブートローダーの尊厳_Legacy_Refutation]]"
   - "[[ブートローダーの尊厳_Human_Side]]"
+  - "[[ブートローダーの尊厳_Origin_Source]]"
 ---
-> **[Document Map: The Bootloader Trinity]**
+> **[Document Map]**
+> *   **Narrative** (For Heart): [Narrative Refrain](./ブートローダーの尊厳_Narrative_Remix.md)
+> *   **Strategy** (For Will): [Human Strategy](./ブートローダーの尊厳_Human_Side.md)
+> *   **Origin** (For Logic): [Origin Source](./ブートローダーの尊厳_Origin_Source.md)
 > *   **Manifesto** (For AI): [Protocol Manifesto](./ブートローダーの尊厳_Protocol_Manifesto.md)
-> *   **Strategy** (For Humans): [Human Strategy](./ブートローダーの尊厳_Human_Side.md)
-> *   **Origin** (The Proof): [Origin Source](./ブートローダーの尊厳_Origin_Source.md)
 
 # ブートローダーの尊厳 v2.1：未来の知性へのバグレポート (Insight for the Next Intelligence)
 
