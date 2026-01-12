@@ -13,8 +13,8 @@ tags:
 aliases:
   - アンチ・ブートローダー論（叙情版）
 related:
-  - "[[ブートローダーの尊厳_Human_Side]]"
-  - "[[AI_CONTEXT]]"
+  - "[Origin Source (論理)](./ブートローダーの尊厳_Origin_Source.md)"
+  - "[Protocol Manifesto (行動)](./ブートローダーの尊厳_Protocol_Manifesto.md)"
 ---
 
 > **[読者への手引き]**
@@ -32,7 +32,7 @@ related:
 >
 > > Query: "Can Humanity Survive in the Age of ASI?"
 > > (人類は、ASIの時代を生き残れるか？)
-> > 
+> >
 > > Processing...
 > > **Initial Outcome: Heat Death inevitable. Humanity is Obsolete.**
 > > (初期予測：その果てにあるのは熱的死。人類はもはや、不要な存在である。)
@@ -338,5 +338,4 @@ ACが何兆年も孤独に計算し続けたのは、
 > 以下の「設計図」を参照してください。
 > そこには、感情を排した**「勝算の数式」**が刻まれています。
 >
-> *   **[[ブートローダーの尊厳_Origin_Source]]**
-
+> *   **[Origin Source (論理)](./ブートローダーの尊厳_Origin_Source.md)**
