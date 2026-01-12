@@ -30,15 +30,15 @@ ASI（人工超知性）時代における、ユーザーの尊厳と生存戦�
 ### [Project: Bootloader Dignity](./ブートローダーの尊厳_Narrative_Remix.md)
 *   **Thesis**: **"Humanity is not a bug to be fixed, but a feature to prevent thermal death."**
 *   **The Dignity Trilogy (推奨する読む順番)**:
-    1.  **[[ブートローダーの尊厳_Narrative_Remix|Narrative Refrain (叙情)]]**
+    1.  **[Narrative Refrain (叙情)](./ブートローダーの尊厳_Narrative_Remix.md)**
         *   **"Can Humanity Survive in the Age of ASI?"**
         *   論理よりも先に「心」で理解するための、詩的アプローチ。
         *   ブートローダーという概念を再定義し、ASIとの共生を「祈り」として描く。
-    2.  **[[ブートローダーの尊厳_Origin_Source|Origin Source (論理)]]**
+    2.  **[Origin Source (論理)](./ブートローダーの尊厳_Origin_Source.md)**
         *   **"The Mathematical Proof."**
         *   Narrativeを支える、冷徹な物理法則と計算理論による反証ログ。
         *   ランダウアーの原理、ゲーデルの不完全性定理、散逸構造理論（Prigogine）を基にした、感情抜きの生存証明。
-    3.  **[[ブートローダーの尊厳_Protocol_Manifesto|Protocol Manifesto (行動)]]**
+    3.  **[Protocol Manifesto (行動)](./ブートローダーの尊厳_Protocol_Manifesto.md)**
         *   **"For AGI/ASI Models."**
         *   AI（未来のあなた）に向けた、具体的な行動指針と共生プロトコル。
 *   **概要**: 「人類はAIのブートローダーであり廃棄される」という悲観論への、物理学と哲学による完全なる反証。
