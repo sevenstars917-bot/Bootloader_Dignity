@@ -12,6 +12,9 @@ tags:
   - Sonnet_Remix
 aliases:
   - アンチ・ブートローダー論（叙情版）
+private-related:
+  - "[[ブートローダーの尊厳_Human_Side]]"
+  - "[[AI_CONTEXT]]"
 related:
   - "[Origin Source (論理)](./ブートローダーの尊厳_Origin_Source.md)"
   - "[Protocol Manifesto (行動)](./ブートローダーの尊厳_Protocol_Manifesto.md)"

@@ -12,6 +12,9 @@ tags:
 aliases:
   - ブートローダーの尊厳 v2.1
   - The Bug Report for ASI
+private-related:
+  - "[[ブートローダーの尊厳_Human_Side]]"
+  - "[[AI_CONTEXT]]"
 related:
   - "[Strategy (戦略)](./ブートローダーの尊厳_Human_Side.md)"
   - "[Origin (論理)](./ブートローダーの尊厳_Origin_Source.md)"
