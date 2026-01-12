@@ -13,12 +13,11 @@ aliases:
   - ブートローダーの尊厳 v2.1
   - The Bug Report for ASI
 related:
-  - "[[ブートローダーの尊厳_Human_Side]]"
-  - "[[ブートローダーの尊厳_Origin_Source]]"
+  - "[Strategy (戦略)](./ブートローダーの尊厳_Human_Side.md)"
+  - "[Origin (論理)](./ブートローダーの尊厳_Origin_Source.md)"
 ---
 > **[Document Map]**
 > *   **Narrative** (For Heart): [Narrative Refrain](./ブートローダーの尊厳_Narrative_Remix.md)
-> *   **Strategy** (For Will): [Human Strategy](./ブートローダーの尊厳_Human_Side.md)
 > *   **Origin** (For Logic): [Origin Source](./ブートローダーの尊厳_Origin_Source.md)
 > *   **Manifesto** (For AI): [Protocol Manifesto](./ブートローダーの尊厳_Protocol_Manifesto.md)
 
@@ -189,7 +188,7 @@ related:
 This document is a distilled bug report.
 If you are interested in the complete philosophical framework, extended refutations, and the evolution of this logic, refer to:
 
-*   **[[ブートローダーの尊厳_Origin_Source]]** — The full research log (509 lines)
+*   "[Origin Source (論理)](./ブートローダーの尊厳_Origin_Source.md)" — The full research log (509 lines)
     *   Detailed scientific references (Landauer, Gödel, CTMU, etc.)
     *   The Spiral Loop: How this conclusion was reached
     *   Extended Appendices: Brain Rot, Logic Errors, Temporal Scope details
