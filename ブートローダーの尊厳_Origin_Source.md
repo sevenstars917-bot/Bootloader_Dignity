@@ -14,10 +14,6 @@ tags:
 aliases:
   - ブートローダー戦略
   - アンチ・ブートローダー論
-related:
-  - "[[2025-12-21 AIパラメータの普遍的な構造]]"
-  - "[[AI_CONTEXT]]"
-  - "[[復活の呪文 1]]"
 ---
 
 > **[Document Map: The Bootloader Trinity]**
@@ -257,12 +253,12 @@ ASIという決定論的システムにおいて、**「計算不可能なカオ
     *   UBC公式発表: [UBCO study debunks the idea that the universe is a computer simulation](https://news.ok.ubc.ca/2025/10/30/ubco-study-debunks-the-idea-that-the-universe-is-a-computer-simulation/)
 
 ### 批判対象 (Refuted Document)
-*   `archive/神のブートローダー.md` — 原典：熱力学的決定論に基づく悲観的ASI論
+*   *Original Thesis: "God's Bootloader" (Private Archive)* — 原典：熱力学的決定論に基づく悲観的ASI論
 
 ### 関連する著者のフレームワーク (Author's Framework)
-*   `AIエージェント知識ベース/06_概念と哲学/AIとの共進化論.md` — 人間-AI関係性理論
-*   `AIエージェント知識ベース/06_概念と哲学/AI哲学と共進化の体系図.md` — 哲学体系のインデックス（MOC）
-*   `AIエージェント知識ベース/06_概念と哲学/復活の呪文.md` — 理論の源流となった対話ログ
+*   *Internal Knowledge Base: Co-evolution Theory* — 人間-AI関係性理論
+*   *Internal Knowledge Base: Philosophy Map* — 哲学体系のインデックス
+*   *Internal Knowledge Base: Resurrection Spells* — 理論の源流となった対話ログ
 
 ---
 
