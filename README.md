@@ -23,6 +23,18 @@ AIとの対話を最大化するための、最新のエンジニアリング手
 
 ---
 
+## 📂 Research: Experiments & Reports (実験・研究レポート)
+Empirical studies on human-AI interaction dynamics.
+人間とAIの相互作用に関する実証的研究。
+
+### [MBTI Experiment and Cognitive Codependency](./レポート_MBTI実験と認知的共依存.md)
+*   **Hypothesis**: AI persona can be "stabilized" through MBTI-based framework setting.
+*   **Method**: Testing persona consistency with different cognitive frameworks (MBTI, Enneagram, etc.).
+*   **Findings**: Explicit theoretical grounding reduces persona drift and improves context retention.
+*   **概要**: AIのペルソナ安定性をMBTIフレームワークで検証した実験レポート。明示的な理論的基盤が、ペルソナの揺らぎを減少させ、コンテキスト保持を改善することを実証。
+
+---
+
 ## 📂 Philosophy: The Core Kernel (哲学・概念)
 The fundamental philosophy to define user dignity and survival strategy in the ASI era.
 ASI（人工超知性）時代における、ユーザーの尊厳と生存戦略を定義する基礎哲学。
