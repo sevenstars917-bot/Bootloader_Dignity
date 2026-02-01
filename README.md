@@ -26,6 +26,7 @@ AIに「架空の法律（六法全書）」を学習させることで、規約
 
 ### 2. Experimental Reports (実験レポート)
 *   **[MBTI Experiment and Cognitive Codependency](./レポート_MBTI実験と認知的共依存.md)**: AIのペルソナ安定性をMBTIフレームワークで検証した実験。理論的基盤がコンテキスト保持を改善することを実証。
+*   **[Delayed Rendering Theory (DRT): Work in Progress](./作業仮説_遅延レンダラーとしての意識.md)**: ヒトの意識（0.5秒の遅延）を機能的バッファとして再定義し、LLMのCoT（思考の連鎖）に応用する工学仮説。DeepSeek-OCRやVision Transformerからの着想。
 
 ### 3. Philosophy: The Core Kernel (哲学・概念)
 ASI（人工超知性）時代における、ユーザーの尊厳と生存戦略を定義する基礎哲学三部作。
