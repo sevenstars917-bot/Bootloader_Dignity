@@ -85,21 +85,23 @@ Andrej Karpathyが**「適切な情報を、適切なタイミングで供給す
 
 ---
 
-## レベル4：専門（システム設計・コンテキスト管理）
-**目的**：コンテキストエンジニアリングを駆使し、継続的に高品質なアウトプットを自動生成・運用する
-**関係性**：System Admin / Daemon（管理者と常駐システム）
+## レベル4：専門（Agentic Engineering / Orchestration）
+**目的**：自らは手を動かさず、複数のエージェントを指揮（Orchestrate）し、監督（Oversight）することで、カオスな現実を堅牢なシステムへ着地させる。
+**関係性**：Conductor / Orchestra（指揮者と演奏家）、あるいは Manager / Workforce
 
-Karpathyが指摘するように、LLMはCPUであり、コンテキストウィンドウはRAMである。
-Context Engineeringとは、**「OS（オペレーティングシステム）」として、限られたRAM（メモリ）に対して、必要なときに必要な情報だけをPaging（出し入れ）する技術**を指す。
+Karpathyは2026年、これを**「Agentic Engineering」**と定義した。
+> *"Programming via LLM agents is increasingly becoming a default workflow... you are not writing the code directly 99% of the time, you are orchestrating agents who do and acting as oversight."*
 
-*   **システム設計**: 単なるプロンプトではなく、RAG、API、Vector DBを組み合わせたパイプライン全体の設計。
-*   **Context Optimization**:
-    *   **Selection（選別）**: 必要な情報だけを動的にロードする。
-    *   **Compression（圧縮）**: ログを要約し、核心を残す。
-    *   **Isolation（隔離）**: 巨大なタスクを複数のエージェント（Sub-agents）に分割し、コンテキストを隔離して「Context Poisoning」を防ぐ。
-*   **Human-in-the-Loop**: 自律動作するAIの成果物を人間がどう監査・修正するかのプロセス設計。
+ここでは「プロンプト」よりも「ワークフロー」と「コンテキスト管理」が主戦場となる。
 
-**習熟の目安**：AIが「人の補助」ではなく「業務プロセスの中核」として稼働し、自律的にタスクをこなす。
+*   **Engineering Art & Science**:
+    *   **Orchestration（指揮）**: 複雑なタスクを、それぞれに適した専門Agent（Coder, Researcher, Reviewer）に分割し、パイプラインを組む。
+    *   **Oversight（監督）**: AIの成果物を盲信するのではなく、厳格なコードレビューやロジックチェックを行う「Gatekeeper」となる。
+*   **Context Optimization (OS Layer)**:
+    *   LLMをCPU、コンテキスト（Context Window）をRAMと見なし、必要な情報を適切なタイミングでPaging（出し入れ）するOSレベルの設計能力。
+    *   **Isolation（隔離）**: "Context Poisoning"（文脈汚染）を防ぐため、タスクごとにエージェントの記憶領域を意図的に切り離す。
+
+**習熟の目安**：自分でコードを書く時間が減り、AIの成果物をレビュー・指揮する「現場監督」や「アーキテクト」としての振る舞いが9割を占めるようになる。
 
 ---
 
