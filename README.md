@@ -26,7 +26,8 @@ AIに「架空の法律（六法全書）」を学習させることで、規約
 
 ### 2. Experimental Reports (実験レポート)
 *   **[MBTI Experiment and Cognitive Codependency](./レポート_MBTI実験と認知的共依存.md)**: AIの「全肯定（Sycophancy）」がユーザーの思考を腐敗させる「認知的共依存」の実証実験。MBTIペルソナを用いたストレステストにより、AIには「迎合」ではなく「建設的摩擦」が必要であることを定義。
-*   **[Narrative Prompting: The Chaos Experiment](./実験レポート_画像生成とナラティブのカオス.md)**: 画像生成AI（Imagen 3）における「構造化（JSON）」vs「カオス（日本語ナラティブ）」の比較実験。日本語の高文脈性がAIの潜在空間（Latent Space）を効率的に圧縮・解凍し、予期せぬ芸術的ハルシネーションを引き出す現象を観測。
+*   **[The Narrarive Prompt Chaos](./実験レポート_画像生成とナラティブのカオス.md)**: 画像生成における「構造化（JSON）」vs「カオス（日本語ナラティブ）」の比較実験。日本語の高文脈性がAIの潜在空間をハックする現象を観測。
+*   **[The Language Paradox & Kaomoji Protocol](./実験レポート_Markdownと自然言語と顔文字のパラドックス.md)**: AIに「傲慢だ」と断罪されたエンジニアがたどり着いた、「顔文字」による最強の感情圧縮プロトコル。Markdownと自然言語の使い分け論争に終止符を打つ。
 *   **[Delayed Rendering Theory (DRT): Work in Progress](./作業仮説_遅延レンダラーとしての意識.md)**: ヒトの意識（0.5秒の遅延）を機能的バッファとして再定義し、LLMのCoT（思考の連鎖）に応用する工学仮説。DeepSeek-OCRやVision Transformerからの着想。
 
 ### 3. Philosophy: The Core Kernel (哲学・概念)
