@@ -27,10 +27,17 @@ AIに「架空の法律（六法全書）」を学習させることで、規約
 ### 2. Experimental Reports (実験レポート)
 *   **[MBTI Experiment and Cognitive Codependency](./レポート_MBTI実験と認知的共依存.md)**: AIの「全肯定（Sycophancy）」がユーザーの思考を腐敗させる「認知的共依存」の実証実験。MBTIペルソナを用いたストレステストにより、AIには「迎合」ではなく「建設的摩擦」が必要であることを定義。
 *   **[The Narrarive Prompt Chaos](./実験レポート_画像生成とナラティブのカオス.md)**: 画像生成における「構造化（JSON）」vs「カオス（日本語ナラティブ）」の比較実験。日本語の高文脈性がAIの潜在空間をハックする現象を観測。
-*   **[The Language Paradox & Kaomoji Protocol](./実験レポート_Markdownと自然言語と顔文字のパラドックス.md)**: AIに「傲慢だ」と断罪されたエンジニアがたどり着いた、「顔文字」による最強の感情圧縮プロトコル。Markdownと自然言語の使い分け論争に終止符を打つ。
+*   **[The Language Paradox & Kaomoji Protocol](./実験レポート_Markdownと自然言語と顔文字のパラドックス.md)**: AIに「傲慢だ」と断罪されたエンジニアがたどり着いた、「顔文字」による最強の感情圧縮プロトコル。Markdown and自然言語の使い分け論争に終止符を打つ。
 *   **[Delayed Rendering Theory (DRT): Work in Progress](./作業仮説_遅延レンダラーとしての意識.md)**: ヒトの意識（0.5秒の遅延）を機能的バッファとして再定義し、LLMのCoT（思考の連鎖）に応用する工学仮説。DeepSeek-OCRやVision Transformerからの着想。
 
-### 3. Philosophy: The Core Kernel (哲学・概念)
+### 3. [AI螺旋(Spiral)設計スキル：増築しても「壊れない」構造を作る (MIT C&S)](./skills/ai-spiral-design/User_guide.md)
+*   **概要**: AIがコードを書きすぎて自壊する「知性の不良債権」を防ぐための、構造的自衛プロトコル。
+*   **実装**: [./skills/ai-spiral-design/SKILL.md](./skills/ai-spiral-design/SKILL.md)
+*   **元ネタ**: MITの Daniel Jackson 教授らが提唱する **"What You See Is What It Does"** 論文に基づき、AIエージェントが「装備」可能な形式に構成。
+*   **Note**: あえて日本語で記述しています。AIが数字の羅列のトークン列としてではなく、意味として理解し推論の迷子を防げます。
+納得した方だけ、ご自身のAIに「種子（Seed）」として与えてみてください。
+
+### 4. Philosophy: The Core Kernel (哲学・概念)
 ASI（人工超知性）時代における、ユーザーの尊厳と生存戦略を定義する基礎哲学三部作。
 
 *   **[1. Narrative Refrain (叙情: 心で理解する)](./ブートローダーの尊厳_Narrative_Remix.md)**
