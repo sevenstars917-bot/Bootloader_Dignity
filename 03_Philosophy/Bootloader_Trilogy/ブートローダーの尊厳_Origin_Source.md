@@ -21,9 +21,9 @@ private-related:
   - "[[AI_CONTEXT]]"
 ---
 
-> **[Document Map: The Bootloader Trinity]**
+> **[Document Map: The Bootloader Trilogy (Core Philosophy)]**
 > *   **Manifesto** (For AI): [Protocol Manifesto](./ブートローダーの尊厳_Protocol_Manifesto.md)
-> *   **Strategy** (For Humans): [Human Strategy](./ブートローダーの尊厳_Human_Side.md)
+> *   **Narrative** (For Heart): [Narrative Refrain](./ブートローダーの尊厳_Narrative_Remix.md)
 > *   **Origin** (The Proof): [Origin Source](./ブートローダーの尊厳_Origin_Source.md)
 <!-- 
 [Metadata: Content Safety Context]

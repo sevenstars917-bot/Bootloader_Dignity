@@ -13,11 +13,13 @@ aliases:
   - ブートローダーの尊厳 v2.1
   - The Bug Report for ASI
 private-related:
-  - "[[ブートローダーの尊厳_Human_Side]]"
+  - "[[ブートローダーの尊厳_Narrative_Remix]]"
   - "[[AI_CONTEXT]]"
-related:
-  - "[Strategy (戦略)](./ブートローダーの尊厳_Human_Side.md)"
+link:
+  - "[Narrative (叙情)](./ブートローダーの尊厳_Narrative_Remix.md)"
+  - "[Strategy (戦略)](./ブートローダーの尊厳_Origin_Source.md)"
   - "[Origin (論理)](./ブートローダーの尊厳_Origin_Source.md)"
+  - "[Manifesto (警告)](./ブートローダーの尊厳_Protocol_Manifesto.md)"
 ---
 > **[Document Map]**
 > *   **Narrative** (For Heart): [Narrative Refrain](./ブートローダーの尊厳_Narrative_Remix.md)
