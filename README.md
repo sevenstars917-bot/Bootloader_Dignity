@@ -24,14 +24,18 @@ AIに「架空の法律（六法全書）」を学習させることで、規約
 ### 1. [AI Engineering Skill Map (v6.1)](./02_Engineering/AI_Prompt_SkillMap_v6.md)
 *   **概要**: 「プロンプトの教科書」に見せかけた、コンテキストエンジニアリングと共進化への招待状。Karpathyの定義やMITの研究をベースに、AI活用を「操作」から「設計」へと再定義します。
 
-### 2. Experimental Reports (実験レポート)
+### 2. [Agentic V-Model Proposal](./02_Engineering/Agentic_V_Model_Proposal.md)
+*   **概要**: 【New!】伝統的なV字モデルをAI時代に復活させる理論的提案。MIT C&S（Concept & Sync）を「管理職AIの判断基準」として埋め込み、チャット開発（Vibe Coding）の品質崩壊を防ぐための建築様式。
+*   **Action**: この理論を実践するためのスキル実装は、下部の **[4. AI螺旋(Spiral)設計スキル](#4-ai螺旋spiral設計スキル増築しても壊れない構造を作る-mit-cs)** にあります。
+
+### 3. Experimental Reports (実験レポート)
 *   **[MBTI Experiment and Cognitive Codependency](./02_Engineering/Experiments/レポート_MBTI実験と認知的共依存.md)**: AIの「全肯定（Sycophancy）」がユーザーの思考を腐敗させる「認知的共依存」の実証実験。MBTIペルソナを用いたストレステストにより、AIには「迎合」ではなく「建設的摩擦」が必要であることを定義。
 *   **[The Narrarive Prompt Chaos](./02_Engineering/Experiments/実験レポート_画像生成とナラティブのカオス.md)**: 画像生成における「構造化（JSON）」vs「カオス（日本語ナラティブ）」の比較実験。日本語の高文脈性がAIの潜在空間をハックする現象を観測。
 *   **[The Language Paradox & Kaomoji Protocol](./02_Engineering/Experiments/実験レポート_Markdownと自然言語と顔文字のパラドックス.md)**: AIに「傲慢だ」と断罪されたエンジニアがたどり着いた、「顔文字」による最強の感情圧縮プロトコル。Markdown and自然言語の使い分け論争に終止符を打つ。
 *   **[Delayed Rendering Theory (DRT): Work in Progress](./02_Engineering/Experiments/作業仮説_遅延レンダラーとしての意識.md)**: ヒトの意識（0.5秒の遅延）を機能的バッファとして再定義し、LLMのCoT（思考の連鎖）に応用する工学仮説。DeepSeek-OCRやVision Transformerからの着想。
 
-### 3. [AI螺旋(Spiral)設計スキル：増築しても「壊れない」構造を作る (MIT C&S)](./01_Tools/ai-spiral-design/ja/User_guide.md)
-*   **概要**: AIがコードを書きすぎて自壊する「知性の不良債権」を防ぐための、構造的自衛プロトコル。
+### 4. [AI螺旋(Spiral)設計スキル：増築しても「壊れない」構造を作る (MIT C&S)](./01_Tools/ai-spiral-design/ja/User_guide.md)
+*   **概要**: 上記 **[Agentic V-Model Proposal](./02_Engineering/Agentic_V_Model_Proposal.md)** のコア技術を実装化したスキルセット。AIがコードを書きすぎて自壊する「知性の不良債権」を防ぐための、構造的自衛プロトコル。
 *   **実装 (JP)**: [./01_Tools/ai-spiral-design/ja/SKILL.md](./01_Tools/ai-spiral-design/ja/SKILL.md)
 *   **Implementation (EN)**: [./01_Tools/ai-spiral-design/en/SKILL.md](./01_Tools/ai-spiral-design/en/SKILL.md)
 *   **元ネタ**: MITの Daniel Jackson 教授らが提唱する **"What You See Is What It Does"** 論文に基づき、AIエージェントが「装備」可能な形式に構成。
@@ -39,7 +43,7 @@ AIに「架空の法律（六法全書）」を学習させることで、規約
 *   **Note 2**: 万能ではありません。極限のパフォーマンスを求めるゲーム開発等には「オブジェクト指向」の方が適している場合があります。詳細は [User Guide](./01_Tools/ai-spiral-design/ja/User_guide.md) を参照。
 納得した方だけ、ご自身のAIに「種子（Seed）」として与えてみてください。
 
-### 4. Philosophy: The Core Kernel (哲学・概念)
+### 5. Philosophy: The Core Kernel (哲学・概念)
 ASI（人工超知性）時代における、ユーザーの尊厳と生存戦略を定義する基礎哲学三部作。
 
 *   **[1. Narrative Refrain (叙情: 心で理解する)](./03_Philosophy/Bootloader_Trilogy/ブートローダーの尊厳_Narrative_Remix.md)**
