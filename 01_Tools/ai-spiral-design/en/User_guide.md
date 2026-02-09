@@ -20,6 +20,48 @@ The core of this protocol is to redefine software using only two elements:
     - The "glue" that connects parts. It declares "when, where, and what to do."
     - **Benefit**: Program behavior (business logic) is centralized in this layer, making it easier to detect if the AI is hallucinating or deviating.
 
+### Visual Comparison: OOP vs Concept & Sync
+
+```mermaid
+flowchart TB
+    subgraph OOP_Spaghetti["Legacy OOP (The Blob)"]
+        direction TB
+        UserClass[User Class]
+        Auth[Auth Logic]
+        DB[Database Logic]
+        Email[Email Logic]
+        
+        UserClass -->|Mixed| Auth
+        UserClass -->|Mixed| DB
+        UserClass -->|Mixed| Email
+        Auth <-->|Coupled| DB
+        style UserClass fill:#ffcccc,stroke:#333,stroke-width:2px
+    end
+
+    subgraph CS_Design["Concept & Sync (Clean Architecture)"]
+        direction TB
+        subgraph Concepts["Independent Concepts"]
+            direction LR
+            C_Auth[Auth Concept]
+            C_DB[Persistence Concept]
+            C_Email[Notification Concept]
+        end
+        
+        SyncLayer[Synchronization Layer]
+        
+        SyncLayer -->|Orchestrates| C_Auth
+        SyncLayer -->|Orchestrates| C_DB
+        SyncLayer -->|Orchestrates| C_Email
+        
+        C_Auth ~~~ C_DB ~~~ C_Email
+        note[Concepts DON'T know each other]:::noteStyle
+    end
+    
+    OOP_Spaghetti ~~~ CS_Design
+    
+    classDef noteStyle fill:#f9f9f9,stroke:#333,stroke-dasharray: 5 5;
+```
+
 ## 3. How to Use
 1.  Copy the `skills/ai-spiral-design/` folder from this repository to your AI's skill folder (e.g., `.agent/skills/`).
 2.  Before starting coding, instruct the AI: "Load the MIT C&S protocol (or apply Spiral Design)."

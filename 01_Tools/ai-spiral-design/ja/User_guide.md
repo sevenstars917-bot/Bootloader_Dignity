@@ -20,6 +20,48 @@ AIに「それっぽいコード」を書かせて満足していると、いつ
     - 部品同士を繋ぐ「糊（のり）」です。「いつ、どこで、何をするか」というルールを宣言的に記述します。
     - メリット：プログラムの挙動（ビジネスロジック）がこの層に集約されるため、AIの「迷走」を検知しやすくなります。
 
+### 視覚的な比較: OOP vs Concept & Sync
+
+```mermaid
+flowchart TB
+    subgraph OOP_Spaghetti["従来のOOP (スパゲッティコード)"]
+        direction TB
+        UserClass[User Class (巨大化)]
+        Auth[認証ロジック]
+        DB[データベース操作]
+        Email[メール送信]
+        
+        UserClass -->|混在| Auth
+        UserClass -->|混在| DB
+        UserClass -->|混在| Email
+        Auth <-->|密結合 (依存)| DB
+        style UserClass fill:#ffcccc,stroke:#333,stroke-width:2px
+    end
+
+    subgraph CS_Design["Concept & Sync (クリーンアーキテクチャ)"]
+        direction TB
+        subgraph Concepts["独立した概念 (Concepts)"]
+            direction LR
+            C_Auth[認証 Concept]
+            C_DB[永続化 Concept]
+            C_Email[通知 Concept]
+        end
+        
+        SyncLayer[同期層 (Synchronization)]
+        
+        SyncLayer -->|指揮・調整| C_Auth
+        SyncLayer -->|指揮・調整| C_DB
+        SyncLayer -->|指揮・調整| C_Email
+        
+        C_Auth ~~~ C_DB ~~~ C_Email
+        note[コンセプト同士は互いを知らない]:::noteStyle
+    end
+    
+    OOP_Spaghetti ~~~ CS_Design
+    
+    classDef noteStyle fill:#f9f9f9,stroke:#333,stroke-dasharray: 5 5;
+```
+
 ## 3. 使い方
 1.  本リポジトリの `skills/ai-spiral-design/` フォルダを、ご自身のAIのスキルフォルダ（`.agent/skills/` 等）へコピーしてください。
 2.  コーディングを開始する前に、AIに「MIT C&S プロトコルをロードして（またはSpiral設計を適用して）」と指示してください。
