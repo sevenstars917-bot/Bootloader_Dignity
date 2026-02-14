@@ -15,19 +15,21 @@ This skill applies the "Structural Pattern for Legible Software" proposed by the
 ## 🏗️ Architecture Standard
 
 ### 1. Concepts (Independent Components)
-*   **Principle**: Each Concept has a single **Purpose** and **must not depend on any other Concept**.
+*   **Principle**: Each Concept has a single **Purpose** and **must not depend on any other Concept (including UI/View)**.
 *   **Rules**:
     - Direct calls to functions of other Concepts are **Strictly Prohibited**.
     - Direct access to the internal state of other Concepts is **Strictly Prohibited**.
+    - **No "Logic Squatting" in UI/View**: Concepts like sensors, databases, or bridges must be implemented as independent classes or modules, isolated from the UI code.
     - **Use "Unique Names (or IDs)" for external references.**
         - For small-to-medium scale development, prioritize legibility. Adopt unique names that both AI and humans can understand (e.g., `BRAIN_OLLAMA`, `UI_CLIPBOARD`) as IDs.
         - Coupling via object references or class imports between concepts is forbidden.
 
 ### 2. Synchronizations (Declarative Coordination)
 *   **Principle**: All interactions between Concepts must be defined in the Synchronization layer (Syncs).
-*   **Syntax**: **When (Action Completed) -> Where (Condition Check) -> Then (Call Next Action)**
+*   **Syntax**: **When (Action Completed OR Periodical Event) -> Where (Condition Check) -> Then (Update View OR Call Next Action)**
 *   **Rules**:
-    - **Error as Action**: Treat errors (failures) as a valid output of an Action. Handle them explicitly in the synchronization layer (e.g., `When logic fails -> Then log error`).
+    - **UI IS A PUPPET**: The View (UI) must not be an Orchestrator. It should only handle drawing and triggering events. Any decision-making (Polling loops, state transitions, remote requests) must be handled by a dedicated `Synchronizer` layer that controls the View like a puppet.
+    - **Error as Action**: Treat errors (failures) as an intentional state. Handle them explicitly in the synchronization layer to trigger corrective actions or UI state changes (e.g., switching to an error expression).
     - **Flow Context**: Inherit a common `Flow ID` across a causal chain to ensure traceability and debugging.
 
 ## How to execute
