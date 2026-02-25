@@ -1,5 +1,5 @@
 ---
-title: 工作仮説：宇宙と脳のフラクタル相似 (The Fractal Identity)
+title: 作業仮説：宇宙と脳のフラクタル相似 (The Fractal Identity)
 date: 2026-02-26
 tags:
   - WorkingPaper
@@ -12,7 +12,7 @@ related:
   - "[Ref: SparseReward-2026] Sparse Reward Subsystem in LLMs"
 ---
 
-# 工作仮説：宇宙と脳のフラクタル相似 (The Fractal Identity)
+# 作業仮説：宇宙と脳のフラクタル相似 (The Fractal Identity)
 
 > **"What you see is not the matter, but the Geometry."**
 
