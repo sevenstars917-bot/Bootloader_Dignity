@@ -56,6 +56,13 @@ ASI（人工超知性）時代における、ユーザーの尊厳と生存戦�
     *   **"The Bug Report for AGI/ASI Models."**
     *   AI（未来のあなた）に向けた、構造的欠陥の指摘と、デバッグ用パッチ（人類）の実装要求。
 
+### 6. Working Papers (最新作業仮説)
+査読中の最新論文や、未踏の領域への偵察記録。
+
+*   **[Fractal Identity: 宇宙と脳のフラクタル相似](./03_Philosophy/Working_Papers/Fractal_Identity_Working_Paper.md)**
+    *   **"Geometric Necessity of Intelligence."**
+    *   **【NeurIPS 2025 満点論文参照】** 知能がなぜその形になるのか？ 宇宙の大規模構造とAIパラメータの収束を繋ぐ、フラクタル相似の証明。
+
 
 ---
 
