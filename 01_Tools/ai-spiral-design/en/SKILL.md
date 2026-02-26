@@ -20,9 +20,10 @@ This skill applies the "Structural Pattern for Legible Software" proposed by the
     - Direct calls to functions of other Concepts are **Strictly Prohibited**.
     - Direct access to the internal state of other Concepts is **Strictly Prohibited**.
     - **No "Logic Squatting" in UI/View**: Concepts like sensors, databases, or bridges must be implemented as independent classes or modules, isolated from the UI code.
-    - **Use "Unique Names (or IDs)" for external references.**
-        - For small-to-medium scale development, prioritize legibility. Adopt unique names that both AI and humans can understand (e.g., `BRAIN_OLLAMA`, `UI_CLIPBOARD`) as IDs.
-        - Coupling via object references or class imports between concepts is forbidden.
+    - **Always use a "unique name (or ID)" for external references.**
+        - In small to medium-sized development, priority is given to legibility, and a unique name that AI and humans can understand may be adopted as an ID (e.g., `BRAIN_OLLAMA`, `UI_CLIPBOARD`).
+        - However, direct object references or coupling through class imports are strictly prohibited.
+    - **State Transparency**: Concept state should be "readable" from the outside (Sync layer), eliminating the chain of getter functions. Writing is performed only by Actions (Open for reading, strict for writing).pts is forbidden.
 
 ### 2. Synchronizations (Declarative Coordination)
 *   **Principle**: All interactions between Concepts must be defined in the Synchronization layer (Syncs).
@@ -30,7 +31,8 @@ This skill applies the "Structural Pattern for Legible Software" proposed by the
 *   **Rules**:
     - **UI IS A PUPPET**: The View (UI) must not be an Orchestrator. It should only handle drawing and triggering events. Any decision-making (Polling loops, state transitions, remote requests) must be handled by a dedicated `Synchronizer` layer that controls the View like a puppet.
     - **Error as Action**: Treat errors (failures) as an intentional state. Handle them explicitly in the synchronization layer to trigger corrective actions or UI state changes (e.g., switching to an error expression).
-    - **Flow Context**: Inherit a common `Flow ID` across a causal chain to ensure traceability and debugging.
+    - **Flow Context**: Inherit a common `Flow ID` across a causal chain to ensure traceability.
+    - **Action Traces (Causal Signature)**: Leave a signature on all action records indicating "which Sync rule executed it". This makes it possible to identify the cause by simply tracing back the causal graph during debugging. and debugging.
 
 ## How to execute
 1.  **Define Spec**: Clearly define the Concept's role (Purpose) and the Input/Output of its Actions.
