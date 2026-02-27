@@ -62,6 +62,9 @@ ASI（人工超知性）時代における、ユーザーの尊厳と生存戦�
 *   **[Fractal Identity: 宇宙と脳のフラクタル相似](./03_Philosophy/Working_Papers/Fractal_Identity_Working_Paper.md)**
     *   **"Geometric Necessity of Intelligence."**
     *   **【NeurIPS 2025 採択論文参照】** 知能がなぜその形になるのか？ 宇宙の大規模構造とAIパラメータの収束を繋ぐ、フラクタル相似についての作業仮説。
+*   **[MAD Theory: 自律型AIの二つの熱的な死 —— 自己貪食(MAD)と漂流(Drift)](./03_Philosophy/Working_Papers/MAD_Theory_Working_Paper.md)**
+    *   **"The Entropy and Education of Intelligence."**
+    *   **【最新研究論文参照】** 知性のエントロピー増大と『教育』による定常状態の維持。AIが自らの重力（UWS）で自壊するMAD（自己貪食）と、外部との摩擦を失い無能化するDrift（漂流）のメカニズム、および処方箋としての社会的アンカーの提案。
 
 
 ---
