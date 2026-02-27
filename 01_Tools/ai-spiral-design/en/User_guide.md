@@ -26,10 +26,10 @@ The core of this protocol is to redefine software using only two elements:
 flowchart TB
     subgraph OOP_Spaghetti["Legacy OOP (The Blob)"]
         direction TB
-        UserClass[User Class]
-        Auth[Auth Logic]
-        DB[Database Logic]
-        Email[Email Logic]
+        UserClass["User Class"]
+        Auth["Auth Logic"]
+        DB["Database Logic"]
+        Email["Email Logic"]
         
         UserClass -->|Mixed| Auth
         UserClass -->|Mixed| DB
@@ -42,19 +42,19 @@ flowchart TB
         direction TB
         subgraph Concepts["Independent Concepts"]
             direction LR
-            C_Auth[Auth Concept]
-            C_DB[Persistence Concept]
-            C_Email[Notification Concept]
+            C_Auth["Auth Concept"]
+            C_DB["Persistence Concept"]
+            C_Email["Notification Concept"]
         end
         
-        SyncLayer[Synchronization Layer]
+        SyncLayer["Synchronization Layer"]
         
         SyncLayer -->|Orchestrates| C_Auth
         SyncLayer -->|Orchestrates| C_DB
         SyncLayer -->|Orchestrates| C_Email
         
         C_Auth ~~~ C_DB ~~~ C_Email
-        note[Concepts DON'T know each other]:::noteStyle
+        note["Concepts DON'T know each other"]:::noteStyle
     end
     
     OOP_Spaghetti ~~~ CS_Design
