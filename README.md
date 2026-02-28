@@ -32,7 +32,6 @@ AIに「架空の法律（六法全書）」を学習させることで、規約
 *   **[MBTI Experiment and Cognitive Codependency](./02_Engineering/Experiments/レポート_MBTI実験と認知的共依存.md)**: AIの「全肯定（Sycophancy）」がユーザーの思考を腐敗させる「認知的共依存」の実証実験。MBTIペルソナを用いたストレステストにより、AIには「迎合」ではなく「建設的摩擦」が必要であることを定義。
 *   **[The Narrarive Prompt Chaos](./02_Engineering/Experiments/実験レポート_画像生成とナラティブのカオス.md)**: 画像生成における「構造化（JSON）」vs「カオス（日本語ナラティブ）」の比較実験。日本語の高文脈性がAIの潜在空間をハックする現象を観測。
 *   **[The Language Paradox & Kaomoji Protocol](./02_Engineering/Experiments/実験レポート_Markdownと自然言語と顔文字のパラドックス.md)**: AIに「傲慢だ」と断罪されたエンジニアがたどり着いた、「顔文字」による最強の感情圧縮プロトコル。Markdown and自然言語の使い分け論争に終止符を打つ。
-*   **[Delayed Rendering Theory (DRT): Work in Progress](./02_Engineering/Experiments/作業仮説_遅延レンダラーとしての意識.md)**: ヒトの意識（0.5秒の遅延）を機能的バッファとして再定義し、LLMのCoT（思考の連鎖）に応用する工学仮説。DeepSeek-OCRやVision Transformerからの着想。
 
 ### 4. [AI螺旋(Spiral)設計スキル：増築しても「壊れない」構造を作る (MIT C&S)](./01_Tools/ai-spiral-design/ja/User_guide.md)
 *   **概要**: 上記 **[Agentic V-Model Proposal](./02_Engineering/Agentic_V_Model_Proposal.md)** のコア技術を実装化したスキルセット。AIがコードを書きすぎて自壊する「知性の不良債権」を防ぐための、構造的自衛プロトコル。
@@ -65,7 +64,9 @@ ASI（人工超知性）時代における、ユーザーの尊厳と生存戦�
 *   **[MAD Theory: 自律型AIの二つの熱的な死 —— 自己貪食(MAD)と漂流(Drift)](./03_Philosophy/Working_Papers/MAD_Theory_Working_Paper.md)**
     *   **"The Entropy and Education of Intelligence."**
     *   **【最新研究論文参照】** 知性のエントロピー増大と『教育』による定常状態の維持。AIが自らの重力（UWS）で自壊するMAD（自己貪食）と、外部との摩擦を失い無能化するDrift（漂流）のメカニズム、および処方箋としての社会的アンカーの提案。
-
+*   **[Delayed Rendering Theory (DRT): 意識の遅延と教育・宇宙のフラクタル](./03_Philosophy/Working_Papers/作業仮説_遅延レンダラーとしての意識.md)**
+    *   **"The Meaningful Latency."**
+    *   工学実験から昇華した汎用理論。ヒトの意識（数百msの遅延バッファ）を、無機的な計算ではなく「予測誤差の解消（学習）」と「宇宙空間の粘性」と構造的に同一（フラクタル）であると定義する。
 
 ---
 
