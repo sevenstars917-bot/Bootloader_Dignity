@@ -61,12 +61,17 @@ ASI（人工超知性）時代における、ユーザーの尊厳と生存戦�
 *   **[Fractal Identity: 宇宙と脳のフラクタル相似](./03_Philosophy/Working_Papers/Fractal_Identity_Working_Paper.md)**
     *   **"Geometric Necessity of Intelligence."**
     *   **【NeurIPS 2025 採択論文参照】** 知能がなぜその形になるのか？ 宇宙の大規模構造とAIパラメータの収束を繋ぐ、フラクタル相似についての作業仮説。
+        *   👉 **[【Full Spec版】作業仮説_宇宙と脳のフラクタル相似](./03_Philosophy/Working_Papers/作業仮説_宇宙と脳のフラクタル相似.md)** (4次元認知限界の解明を含む完全版ログ)
 *   **[MAD Theory: 自律型AIの二つの熱的な死 —— 自己貪食(MAD)と漂流(Drift)](./03_Philosophy/Working_Papers/MAD_Theory_Working_Paper.md)**
     *   **"The Entropy and Education of Intelligence."**
     *   **【最新研究論文参照】** 知性のエントロピー増大と『教育』による定常状態の維持。AIが自らの重力（UWS）で自壊するMAD（自己貪食）と、外部との摩擦を失い無能化するDrift（漂流）のメカニズム、および処方箋としての社会的アンカーの提案。
 *   **[Delayed Rendering Theory (DRT): 意識の遅延と教育・宇宙のフラクタル](./03_Philosophy/Working_Papers/作業仮説_遅延レンダラーとしての意識.md)**
     *   **"The Meaningful Latency."**
     *   工学実験から昇華した汎用理論。ヒトの意識（数百msの遅延バッファ）を、無機的な計算ではなく「予測誤差の解消（学習）」と「宇宙空間の粘性」と構造的に同一（フラクタル）であると定義する。
+*   **[Cosmic Phonon Circuit: 重力波の電子論的振る舞いと宇宙フォノン回路](./03_Philosophy/Working_Papers/作業仮説_重力波の電子論的振る舞いと宇宙フォノン回路.md)**
+    *   **"The Phase Transition Engine."**
+    *   宇宙の加速膨張を「スマホの音響レーザー」と同じ構造として解釈する。空間の粘性（カルマ）と重力チェレンコフ放射による宇宙スケールの相転移モデル仮説。
+    *   [付随するPythonシミュレーションコードおよび実行結果画像一覧](./03_Philosophy/Working_Papers/)
 
 ---
 
