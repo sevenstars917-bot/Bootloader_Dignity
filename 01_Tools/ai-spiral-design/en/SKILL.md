@@ -19,22 +19,29 @@ This skill applies the "Structural Pattern for Legible Software" proposed by the
 *   **Rules**:
     - Direct calls to functions of other Concepts are **Strictly Prohibited**.
     - Direct access to the internal state of other Concepts is **Strictly Prohibited**.
-    - **No "Logic Squatting" in UI/View**: Concepts like sensors, databases, or bridges must be implemented as independent classes or modules, isolated from the UI code.
+    - **No "Logic Squatting" in UI/View**: Concepts like sensors, databases, or bridges must be implemented as independent classes or modules, isolated from UI code.
     - **Always use a "unique name (or ID)" for external references.**
-        - In small to medium-sized development, priority is given to legibility, and a unique name that AI and humans can understand may be adopted as an ID (e.g., `BRAIN_OLLAMA`, `UI_CLIPBOARD`).
-        - However, direct object references or coupling through class imports are strictly prohibited.
-    - **State Transparency**: Concept state should be "readable" from the outside (Sync layer), eliminating the chain of getter functions. Writing is performed only by Actions (Open for reading, strict for writing).pts is forbidden.
+        - In collaborative AI development, use semantic unique names as IDs (e.g., `BRAIN_OLLAMA`, `UI_CLIPBOARD`) to prioritize legibility. Direct object references or coupling through class imports are strictly prohibited.
+    - **State Transparency**: 
+        - **"Open for Reading, Strict for Writing."**
+        - Concept state should be "readable" directly from the outside (Sync layer), eliminating getter function chains. Writing is performed ONLY by Actions.
+    - **Robustness**: When handling external processes, anticipate "Encoding Gravity" (UTF-8/SJIS mix). Use binary fetching and manual decoding or force environment variables to ensure stable data handling.
 
 ### 2. Synchronizations (Declarative Coordination)
 *   **Principle**: All interactions between Concepts must be defined in the Synchronization layer (Syncs).
-*   **Syntax**: **When (Action Completed OR Periodical Event) -> Where (Condition Check) -> Then (Update View OR Call Next Action)**
+*   **Syntax**: **When (Action Completed) -> Where (State Check) -> Then (Update View OR Call Next Action)**
 *   **Rules**:
-    - **UI IS A PUPPET**: The View (UI) must not be an Orchestrator. It should only handle drawing and triggering events. Any decision-making (Polling loops, state transitions, remote requests) must be handled by a dedicated `Synchronizer` layer that controls the View like a puppet.
-    - **Error as Action**: Treat errors (failures) as an intentional state. Handle them explicitly in the synchronization layer to trigger corrective actions or UI state changes (e.g., switching to an error expression).
+    - **UI IS A PUPPET**: The View (UI) must not handle logic. It should be a "Dumb View" that only draws and triggers events. A dedicated `Synchronizer` must act as the Orchestrator, controlling the View.
+    - **Error as Action**: Treat errors as valid results. Explicitly handle them in the Sync layer to manage state transitions or error handling logic.
     - **Flow Context**: Inherit a common `Flow ID` across a causal chain to ensure traceability.
-    - **Action Traces (Causal Signature)**: Leave a signature on all action records indicating "which Sync rule executed it". This makes it possible to identify the cause by simply tracing back the causal graph during debugging. and debugging.
+    - **Action Traces (Causal Signature)**: Sign all action logs with "which Sync rule executed it." This allows AI (and humans) to trace back the causal graph to identify the root cause instantly.
+
+### 3. 🛡️ UI Leak & Callback Prevention (Engineering Decalogue)
+*   **No Callback Arguments**: Do not pass `on_success` or `on_error` functions into Concept asynchronous methods. This is an architectural failure that leaks UI-layer dependencies into the Concept's logic.
+*   **Use Event Queues**: Put asynchronous action results into a thread-safe Queue as "event objects" (dictionaries). Only the Synchronizer should monitor the queue to update the UI.
 
 ## How to execute
-1.  **Define Spec**: Clearly define the Concept's role (Purpose) and the Input/Output of its Actions.
-2.  **Declare Syncs**: Define business logic declaratively using the When/Where/Then format.
-3.  **Encapsulated Implementation**: Implement Concepts as fully isolated modules. They should be deaf and blind to the outside world, reacting only to specific invocations orchestrated by the Sync layer.
+1.  **Define Spec**: Before implementation, define the Concept's role (Purpose, State, Action names).
+2.  **Declare Syncs**: Declare your "Operational Principles" (baseline scenarios) using the When/Where/Then format.
+3.  **Encapsulated Implementation**: Implement Concepts as fully isolated modules. They should be "deaf and blind" to the rest of the system.
+4.  **No Transactions**: Do not rely on massive atomic transactions. Build complex behaviors incrementally (spirally) by layering individual causal Sync rules.
