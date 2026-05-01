@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>AI Talent &amp; Tech Integration Report | 2026 Q1</title>
+  <meta name="description" content="AI人材・技術体系統合レポート（2026 Q1）: Agentic EngineeringとContext Engineeringの定義、およびベンダー対応表。">
+  <meta name="author" content="The Architect / Antigravity Research">
+  <meta name="version" content="1.0.6+toA">
+  <meta name="document-id" content="ATG-2026-Q1-001">
+  <meta name="security-classification" content="PUBLIC / OPEN KNOWLEDGE">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&family=JetBrains+Mono&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --primary: #6366f1;
+      --primary-glow: rgba(99, 102, 241, 0.2);
+      --bg-dark: #020617;
+      --card-dark: #0f172a;
+      --border-dark: #1e293b;
+      --text-dark: #f8fafc;
+      --accent-cyan: #22d3ee;
+      --accent-purple: #a855f7;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      line-height: 1.7;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .report-container {
+      max-width: 900px;
+      width: 100%;
+      background: var(--card-dark);
+      border: 1px solid var(--border-dark);
+      border-radius: 24px;
+      padding: 60px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+
+    header {
+      border-bottom: 1px solid var(--border-dark);
+      padding-bottom: 40px;
+      margin-bottom: 40px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      background: linear-gradient(to right, var(--accent-cyan), var(--primary), var(--accent-purple));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 0 0 10px 0;
+    }
+
+    .timestamp {
+      color: #64748b;
+      font-size: 0.9rem;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      margin-top: 50px;
+      color: var(--accent-cyan);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    h2::before {
+      content: "::";
+      color: var(--primary);
+      opacity: 0.5;
+    }
+
+    /* Table: The Star of the Show */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 30px 0;
+      font-size: 0.9rem;
+    }
+
+    th {
+      text-align: left;
+      padding: 12px 16px;
+      background: rgba(99, 102, 241, 0.1);
+      color: var(--primary);
+      text-transform: uppercase;
+      font-weight: 700;
+      border-bottom: 2px solid var(--primary);
+    }
+
+    td {
+      padding: 16px;
+      border-bottom: 1px solid var(--border-dark);
+    }
+
+    tr:hover {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    /* List */
+    li {
+      margin-bottom: 12px;
+    }
+
+    /* Links */
+    a {
+      color: var(--accent-cyan);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(34, 211, 238, 0.3);
+      transition: all 0.2s;
+    }
+
+    a:hover {
+      border-bottom: 1px solid var(--accent-cyan);
+      background: rgba(34, 211, 238, 0.1);
+    }
+
+    @media print {
+      body {
+        background: white;
+        color: black;
+        padding: 0;
+      }
+
+      .report-container {
+        border: none;
+        box-shadow: none;
+        width: 100%;
+        padding: 0;
+        max-width: none;
+      }
+
+      header {
+        margin-bottom: 20px;
+        border-color: #000;
+      }
+
+      h1 {
+        -webkit-text-fill-color: black;
+        font-size: 2rem;
+      }
+
+      h2 {
+        color: black;
+        border-bottom: 1px solid #eee;
+        break-after: avoid;
+      }
+
+      table {
+        page-break-inside: auto;
+      }
+
+      tr {
+        page-break-inside: avoid;
+        page-break-after: auto;
+      }
+
+      thead {
+        display: table-header-group;
+      }
+
+      th {
+        background: #f1f5f9;
+        color: black;
+        border-bottom: 2px solid black;
+      }
+
+      td {
+        border-bottom: 1px solid #e2e8f0;
+      }
+    }
+
+    /* toA Structural Helpers */
+    .v-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .label-main {
+      font-weight: 700;
+      display: block;
+    }
+
+    .label-sub {
+      font-size: 0.8em;
+      opacity: 0.7;
+      display: block;
+    }
+
+    .hidden-context {
+      display: none;
+    }
+
+    [role="definition"] {
+      cursor: help;
+      border-bottom: 1px dotted var(--accent-cyan);
+    }
+
+    /* Reading Guide Styles */
+    .copilot-hint {
+      font-size: 0.85rem;
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      padding: 1rem;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      color: #94a3b8;
+      background: rgba(15, 23, 42, 0.5);
+    }
+  </style>
+</head>
+
+<body>
+  <article class="report-container" id="ai-seminar-report-root">
+    <header>
+      <h1>AI Talent &amp; Technology Integration Report <span class="label-sub">(2026 Q1 Edition)</span></h1>
+      <div class="timestamp">
+        REF NO: ATG-2026-Q1-001 | ISSUED: 2026-04-08 | ARCHITECT: Antigravity
+      </div>
+    </header>
+    <main>
+      <!-- AI-Native Optimization Note -->
+      <div class="copilot-hint">
+        <div
+          style="display: flex; align-items: center; gap: 8px; margin-bottom: 0.5rem; color: var(--accent-cyan); font-weight: 700;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z" />
+          </svg>
+          <span>Copilot Optimized Document / Interactive Reading Enabled</span>
+        </div>
+        本レポートは Microsoft Edge + Copilot での対話的な読み解きを想定して構造化されています。
+        「<span style="color:var(--accent-cyan)">このページの内容を</span>要約して」
+        「<span style="color:var(--accent-cyan)">この中の</span>〇〇という用語を噛み砕いて」
+        等を行い読み込ませてください。その後は「用語の噛み砕き解説」「自身の業務への適用案」など、Copilot への自由な問いかけを併用してください。
+      </div>
+
+      <section id="segment-matrix">
+        <h2>1. AI人材・戦略的セグメント（2大ドメイン構造）</h2>
+
+        <div
+          style="background: rgba(30, 41, 59, 0.5); padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--accent-cyan); margin-bottom: 2rem;">
+          <h3 style="margin-top: 0; font-size: 1.1rem;">【ドメイン境界の定義】</h3>
+          <p style="margin-bottom: 1rem; font-size: 0.95rem;">
+            本定義では、AI技術領域を意図的に「2つの大ドメイン」に分割している。これは「AI」という単一の抽象概念による採用・配置のミスマッチを防ぐためである。<br>
+            <strong>Domain A</strong> が“推論の自律化（非決定論）”を扱うソフトウェア・エンジニアリングの系譜であるのに対し、<strong>Domain B</strong>
+            は“物理事象の定量化（決定論）”を扱うデータサイエンス・数理統計の系譜であり、両者は必要とされる技術体系と能力要件が根本的に異なる。
+          </p>
+          <table aria-label="Domain A and B Comparison" style="font-size: 0.9rem; margin-bottom: 0;">
+            <thead>
+              <tr>
+                <th style="min-width: 120px;">比較パラダイム</th>
+                <th>Domain A (Generative &amp; Agentic)</th>
+                <th>Domain B (Specific &amp; Discriminative)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>本質的な役割</strong></td>
+                <td>コンテキストの推論とプロセスの自律化</td>
+                <td>物理世界の観測データに基づく「正解」の抽出</td>
+              </tr>
+              <tr>
+                <td><strong>出力の性質</strong></td>
+                <td>非決定論（確率的・柔軟な言語やUIの生成）</td>
+                <td>決定論への収束（統計的に最も蓋然性の高い数値・ラベル）</td>
+              </tr>
+              <tr>
+                <td><strong>代表的タスク</strong></td>
+                <td>Agentic RAG、推論ループ設計、社内文書要約</td>
+                <td>エンジンの異常検知、衛星画像の物体認識、需要予測</td>
+              </tr>
+              <tr>
+                <td><strong>スキルの重心</strong></td>
+                <td>システム制御論（Harness設計）、プロンプト・エンジニアリング</td>
+                <td>統計解析、数学、特徴量エンジニアリング（Feature Engineering）</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Domain A: Generative &amp; Agentic（汎用知能・制御系）</h3>
+
+        <table aria-label="Domain A">
+          <thead>
+            <tr>
+              <th style="min-width: 120px;">層 / セグメント</th>
+              <th>Tier</th>
+              <th>呼称（役割）</th>
+              <th>立ち位置</th>
+              <th>主要スキル / 実装対象</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="v-stack">
+                  <span class="label-main">ビジネスドメイン層</span>
+                  <span class="label-sub">(AI DX Leadership)</span>
+                </div>
+              </td>
+              <td style="text-align: left;"><strong>Tier 1</strong></td>
+              <td style="text-align: left;"><strong>Transformation Lead</strong></td>
+              <td style="text-align: left;"><strong>業務プロセス再定義</strong></td>
+              <td style="text-align: left;">自社ドメインの専門知識に基づき、業務プロセスを「AIが自律実行しやすい構造（toA = to AI）」へ根本から再構築する変革リーダー。</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td style="text-align: left;"><strong>Tier 2</strong></td>
+              <td style="text-align: left;"><strong>Department Champion</strong></td>
+              <td style="text-align: left;"><strong>標準化・チーム普及</strong></td>
+              <td style="text-align: left;">チーム内で活用するプロンプトの体系化やカスタムツールの展開を担い、現場メンバーのAI利活用レベルの底上げを牽引する。</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td style="text-align: left;"><strong>Tier 3</strong></td>
+              <td style="text-align: left;"><strong>Productivity Catalyst</strong></td>
+              <td style="text-align: left;"><strong>高位個人生産性</strong></td>
+              <td style="text-align: left;">実務における圧倒的な個人レベルのAI活用により、処理速度と品質の劇的な向上を実証し、周囲にAIの有用性を示す着火剤。</td>
+            </tr>
+            <tr id="role-agentic-tier-1">
+              <td>
+                <div class="v-stack">
+                  <span class="label-main">Agenticエンジニア</span>
+                  <span class="label-sub">【AI as Subject】</span>
+                  <span class="label-sub">自律型AIシステム設計</span>
+                </div>
+              </td>
+              <td style="text-align: left;"><strong>Tier 1</strong></td>
+              <td style="text-align: left;"><strong>Policy &amp; LLM OS Architect</strong></td>
+              <td style="text-align: left;"><strong>知能制御・LLM OS設計</strong></td>
+              <td style="text-align: left;">Subagents（独立コンテキスト管理）の全体統制、Skills（能力モジュール）の定義、Hooks（推論ループ制御）の実装を設計する。</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td style="text-align: left;"><strong>Tier 2</strong></td>
+              <td style="text-align: left;">
+                <div class="v-stack">
+                  <span class="label-main">Harness Designer</span>
+                  <span class="label-sub">(安全制御の設計者)</span>
+                </div>
+              </td>
+              <td style="text-align: left;"><strong>推論ループ構築 / 硬質化</strong></td>
+              <td style="text-align: left;">
+                「Agent = Model + Harness」の思想に基づき、多段階思考ループ、Tool実行の権限管理、独立した検証（Sensors）を設計。AIの非決定的な振る舞いを本番環境用へ硬質化させる。
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td style="text-align: left;"><strong>Tier 3</strong></td>
+              <td style="text-align: left;"><strong>Agent Integrator</strong></td>
+              <td style="text-align: left;"><strong>エージェント統合</strong></td>
+              <td style="text-align: left;">公開済みのSkillsやMCPサーバーを統合し、自律型AIソリューションを最短で実戦投入する。</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="v-stack">
+                  <span class="label-main">Contextエンジニア</span>
+                  <span class="label-sub">【AI as Component】</span>
+                  <span class="label-sub">AI接続・RAG開発</span>
+                </div>
+              </td>
+              <td style="text-align: left;"><strong>Tier 1</strong></td>
+              <td style="text-align: left;"><strong>Search Orchestrator</strong></td>
+              <td style="text-align: left;"><strong>反復型Retrieval設計</strong></td>
+              <td style="text-align: left;">Agentic RAGを実現する、検索・評価・再検索を繰り返す高度な反復型Retrieval Loopを設計・最適化する。</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td style="text-align: left;"><strong>Tier 2</strong></td>
+              <td style="text-align: left;"><strong>Integration Developer</strong></td>
+              <td style="text-align: left;"><strong>AI機能の組み込み</strong></td>
+              <td style="text-align: left;">既存アプリへのLLM API統合、およびFunction Calling（ツール呼び出し）に関わるプロトコル定義と実装を行う。</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td style="text-align: left;"><strong>Tier 3</strong></td>
+              <td style="text-align: left;"><strong>AI Consumer</strong></td>
+              <td style="text-align: left;"><strong>パッケージ活用</strong></td>
+              <td style="text-align: left;">既存のAIコンポーネントやパッケージを導入し、チャットインターフェースや要約機能を迅速に実装する。</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="v-stack">
+                  <span class="label-main">ITエンジニア</span>
+                  <span class="label-sub">【AI as Tool】</span>
+                  <span class="label-sub">AI-Nativeシステム開発</span>
+                </div>
+              </td>
+              <td style="text-align: left;"><strong>Tier 1</strong></td>
+              <td style="text-align: left;"><strong>System Architect</strong></td>
+              <td style="text-align: left;"><strong>構造・型の設計</strong></td>
+              <td style="text-align: left;">AIツール活用を前提とした疎結合なモジュール設計、および高信頼性を保証するAPIアーキテクチャを策定する。</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td style="text-align: left;"><strong>Tier 2</strong></td>
+              <td style="text-align: left;"><strong>Logic Developer</strong></td>
+              <td style="text-align: left;"><strong>機能実装</strong></td>
+              <td style="text-align: left;">オブジェクト指向ベースの機能開発。AIコード生成を活用し、UIおよびCRUD処理を含む堅牢なシステム実装を行う。</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td style="text-align: left;"><strong>Tier 3</strong></td>
+              <td style="text-align: left;"><strong>Copilot Coder</strong></td>
+              <td style="text-align: left;"><strong>AIアシスト開発</strong></td>
+              <td style="text-align: left;">Cursor等のAIコーディングツールをフル活用し、従来型開発プロセスの実装速度と品質の最大化を遂行する。</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3 style="margin-top: 40px; color: var(--accent-purple);">Domain B: Specific &amp; Discriminative（特化知能・物理予測系）
+        </h3>
+        <table aria-label="Domain B">
+          <thead>
+            <tr>
+              <th style="min-width: 120px;">層 / セグメント</th>
+              <th>Tier</th>
+              <th>呼称（役割）</th>
+              <th>立ち位置</th>
+              <th>主要スキル / 実装対象</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="v-stack">
+                  <span class="label-main">識別・予測系AI層</span>
+                  <span class="label-sub">【AI as Engine】</span>
+                  <span class="label-sub">物理事象の数理化</span>
+                </div>
+              </td>
+              <td style="text-align: left;"><strong>Tier 1</strong></td>
+              <td style="text-align: left;"><strong>Model Architect</strong></td>
+              <td style="text-align: left;"><strong>物理・高信頼性設計</strong></td>
+              <td style="text-align: left;">センサーや映像等の物理データを学習し、異常検知、物体認識、数値予測等の「正解のある問い」を解く、統計的・数理的エンジンを構築。</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td style="text-align: left;"><strong>Tier 2</strong></td>
+              <td style="text-align: left;"><strong>Feature Engineer</strong></td>
+              <td style="text-align: left;"><strong>特徴量抽出・最適化</strong></td>
+              <td style="text-align: left;">衛星・船舶・エッジ機器等の制約環境下で、計算効率を極限まで高めたモデル選定と特徴量抽出、量子化等の硬質化を遂行する。</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td style="text-align: left;"><strong>Tier 3</strong></td>
+              <td style="text-align: left;"><strong>Data Scientist</strong></td>
+              <td style="text-align: left;"><strong>統計的分析・評価</strong></td>
+              <td style="text-align: left;">データの統計的特性を解剖し、精度の壁を突破するためのデータクレンジングと、不均衡データ下での精緻な検証を統括。</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>※ 2026年4月時点の暫定定義。各レイヤーのTierは独立した習熟度指標。要員は複数領域を跨ぐ多面的なスキル構成（グラデーション）を持つ。</p>
+        <p>※ 特に入力データからモデルを構築する <strong>Domain B</strong> においては、プロバイダー側（基盤開発側）で行われる高度な MLOps や大規模学習パイプライン構築等の職種も存在するが、本レポートでは「ユーザー企業におけるAI活用・実装」のサプライチェーンにフォーカスするため、意図的に割愛している。</p>
+        <p>※ 特にビジネス層においては、<strong>「自身の専門ドメイン能力」と「AIを使いこなし変革を牽引する能力」の掛け合わせ（xR）</strong>が重要であり、単なるITリテラシーの多寡ではない点に留意が必要。</p>
+
+        <hr />
+        <section id="karpathy-definition">
+          <h3>【参考】Context Engineering vs Agentic Engineering（Karpathy定義）</h3>
+          <table>
+            <thead>
+              <tr>
+                <th style="text-align: left;">概念</th>
+                <th style="text-align: left;">目的（フォーカス）</th>
+                <th style="text-align: left;">実装の方向性</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="text-align: left;"><strong>Context Engineering</strong></td>
+                <td style="text-align: left;"><strong>入力情報の最適化</strong></td>
+                <td style="text-align: left;">LLMへの入力（指示・RAG・Tool定義）を精緻に設計し、単一推論（Single-shot）の精度を最大化する。</td>
+              </tr>
+              <tr>
+                <td style="text-align: left;"><strong>Agentic Engineering</strong></td>
+                <td style="text-align: left;"><strong>推論プロセスの自律化</strong></td>
+                <td style="text-align: left;">
+                  <strong>Subagents</strong>へのタスク委譲や、再帰的な推論ループを設計。外部環境との相互作用を経てゴールへ到達する自律システム。
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <ul>
+            <li><strong>2026 Q1 トレンド</strong>: RAGはもはや静的なデータ取得ではなく、AIが自律的に検索結果を評価・再検索する <strong>Agentic RAG</strong>（反復型検索ループ）が標準実装。</li>
+          </ul>
+        </section>
+      </section>
+
+      <hr />
+
+      <section id="jd-resolution">
+        <h2>2. 【課題】案件定義（JD）の解像度不足への対策</h2>
+        <p>人材の役割と技術の階層が整理されたところで、次に実務的な採用や発注における「JD（職務記述書）の解像度」という課題に対応する。</p>
+        <p>「AIに対応できる人材」という抽象的な定義を解体し、以下のロールを基準として発注要件の定義・マッチングを行う。</p>
+        <table>
+          <thead>
+            <tr>
+              <th style="text-align: left;">ドメイン</th>
+              <th style="text-align: left;">ロール呼称</th>
+              <th style="text-align: left;">領域性質</th>
+              <th style="text-align: left;">期待される専門性（JDの要諦）</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align: left;"><strong>Gen &amp; Agentic</strong></td>
+              <td style="text-align: left;"><strong>AI Transformation Lead</strong></td>
+              <td style="text-align: left;">戦略・経営</td>
+              <td style="text-align: left;"><strong>AI活用によるビジネス変革の推進力</strong>。ROI試算、モデル選定、組織導入計画（チェンジマネジメント）の実行能力。</td>
+            </tr>
+            <tr>
+              <td style="text-align: left;"></td>
+              <td style="text-align: left;"><strong>Agentic Engineer</strong></td>
+              <td style="text-align: left;">制御論 / LLM OS</td>
+              <td style="text-align: left;"><strong>自律型AIの設計・実装</strong>。Subagents統合、Policy定義（LoRA適用等）、MCP統合による能力拡張を遂行する。</td>
+            </tr>
+            <tr>
+              <td style="text-align: left;"></td>
+              <td style="text-align: left;"><strong>Context Engineer</strong></td>
+              <td style="text-align: left;">非決定論 / RAG</td>
+              <td style="text-align: left;"><strong>Agentic RAGの構築</strong>。検索・評価・再検索を繰り返すIterative Retrieval Loopの構築と最適化を遂行する。</td>
+            </tr>
+            <tr>
+              <td style="text-align: left;"></td>
+              <td style="text-align: left;"><strong>AI-Native Developer</strong></td>
+              <td style="text-align: left;">決定論 / Tool</td>
+              <td style="text-align: left;"><strong>AIツールを活用した生産性の極大化</strong>。最新のコード生成モデルを実務に組み込み、開発リードタイムを極小化。</td>
+            </tr>
+            <tr>
+              <td style="text-align: left;"><strong>Specific &amp; Disc.</strong></td>
+              <td style="text-align: left;"><strong>Discriminative ML Engineer</strong></td>
+              <td style="text-align: left;">統計化 / 物理</td>
+              <td style="text-align: left;"><strong>物理世界のデジタル化</strong>。異常検知や物体認識を通じ、物理事象を「識別・予測」可能なデータへと変換する。</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <hr />
+
+      <section id="ars-matrix">
+        <h2>3. 【ドラフト】AIスキル標準（toA-S）ベンダー対応表</h2>
+        <p>「理論・体系（GCP）」を基軸に、各エコシステムの実践プログラムを対応づける。</p>
+        <table>
+          <thead>
+            <tr>
+              <th style="text-align: left;">ドメインと適用層</th>
+              <th style="text-align: left;">① 理論・体系 (Google Cloud)</th>
+              <th style="text-align: left;">② 実務・エコシステム (Anthropic / OpenAI)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align: left;"><strong>[Domain A]<br>Agentic</strong></td>
+              <td style="text-align: left;"><strong>Vertex AI Agent Builder</strong><br>Custom Extensions &amp; Tools</td>
+              <td style="text-align: left;"><strong>Anthropic Academy (Official):</strong><br>Introduction to Subagents<br>Skills &amp; Hooks (Dev Docs) (※1)</td>
+            </tr>
+            <tr>
+              <td style="text-align: left;"><strong>[Domain A]<br>Context</strong></td>
+              <td style="text-align: left;"><strong>Vertex AI Search</strong><br>Vector Search Dive</td>
+              <td style="text-align: left;"><strong>Anthropic Academy (Official):</strong><br>Introduction to MCP<br>Claude API Integration</td>
+            </tr>
+            <tr>
+              <td style="text-align: left;"><strong>[Domain A]<br>IT-Native</strong></td>
+              <td style="text-align: left;"><strong>Gen AI for Developers</strong><br>Gemini Code Assist</td>
+              <td style="text-align: left;"><strong>Anthropic Official Training:</strong><br>Claude Code in Action<br><strong>OpenAI Academy (Official):</strong><br>Advanced Code Capabilities</td>
+            </tr>
+            <tr>
+              <td style="text-align: left;"><strong>[Domain A]<br>Business User</strong></td>
+              <td style="text-align: left;"><strong>Generative AI Fundamentals</strong></td>
+              <td style="text-align: left;"><strong>Anthropic Official Training:</strong><br>Claude Cowork / AI Fluency<br><strong>OpenAI: ChatGPT (101/102)</strong></td>
+            </tr>
+            <tr>
+              <td style="text-align: left;"><strong>[Domain B]<br>Discriminative ML</strong></td>
+              <td style="text-align: left;"><strong>Vertex AI (Custom Training)</strong><br>AutoML Deep Dive</td>
+              <td style="text-align: left;"><strong>Community / Papers:</strong><br>State-of-the-Art ML Papers<br>PyTorch / TensorFlow Docs</td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="font-size: 0.85rem; color: #94a3b8; margin-top: -10px;">
+          <strong>(※1) 実装プロトコルの補完</strong>: "Agent Skills"（能力のパッケージ化）および "Hooks"（推論ループへの介入）は、2026 Q1時点では各社のE-learningコースに未収録ですが、Developer Docsの「Advanced Implementation（実戦実装）」において、自律型エージェント制御の核心技術として定義されています。
+        </p>
+      </section>
+
+      <hr />
+
+      <section id="tier-0-requirements">
+        <h2>4. 求められる「AI変革推進人材」の要件定義（Tier 0）</h2>
+        <p>事業会社（DX推進部門等）に不可欠な<strong>「技術と経営の橋渡し役（AI Transformation Lead）」</strong>の要件。</p>
+        <ul>
+          <li><strong>業務プロセスの再設計</strong>: 既存業務フローを分析し、AIが自律構築・実行しやすい形へ論理的に再構成・分解できる。</li>
+          <li><strong>技術ポートフォリオ管理</strong>: オンプレミス型（機密保護）とクラウド型（性能）のトレードオフを明確化し、最適解を提言できる。</li>
+          <li><strong>AIガバナンス設計</strong>: 自律エージェントの動作範囲を監督し、ハーネス（制御基盤）の設計指針と倫理的境界を策定できる。</li>
+          <li><strong>エコシステム統合設計</strong>: MCP等の最新基準を基盤に、各社の機能特性を適材適所で組み合わせたシステム全体像を描ける。</li>
+        </ul>
+      </section>
+
+      <footer id="document-footer">
+        <hr />
+        <h2>Appendix: References</h2>
+        <p>
+          <a href="https://anthropic.skilljar.com/">Anthropic Academy</a><br />
+          <a href="https://academy.openai.com/">OpenAI Academy</a><br />
+          <a href="https://www.skills.google/">Google Cloud Skills</a>
+        </p>
+        <div style="font-size: 0.7rem; color: #64748b; margin-top: 40px; text-align: right;">
+          Build by Antigravity Research (toA Standard Compliance Ver 1.0.6)
+        </div>
+      </footer>
+    </main>
+  </article>
+</body>
+
+</html>
