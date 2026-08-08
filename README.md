@@ -17,11 +17,11 @@ AIとの共進化を探求する、野良AIエンジニアの研究ログ & ツ�
 ## 📂 Engineering & Research (技術と考察)
 ここから先はエンジニア・AI愛好家向けの少しコアな内容です。
 
-### 1. [AI Engineering Skill Map (v6.1)](./02_Engineering/AI_Prompt_SkillMap_v6.md)
+### 1. [AI Prompt & Skill Map v7.0](./02_Engineering/AI_Prompt_SkillMap_v7.md)
 *   **概要**: 「プロンプトの教科書」に見せかけた、コンテキストエンジニアリングと共進化への招待状。Karpathyの定義やMITの研究をベースに、AI活用を「操作」から「設計」へと再定義します。
 
 ### 2. [Agentic V-Model Proposal](./02_Engineering/Agentic_V_Model_Proposal.md)
-*   **概要**: 【New!】伝統的なV字モデルをAI時代に復活させる理論的提案。MIT C&S（Concept & Sync）を「管理職AIの判断基準」として埋め込み、チャット開発（Vibe Coding）の品質崩壊を防ぐための建築様式。
+*   **概要**: 伝統的なV字モデルをAI時代に復活させる理論的提案。MIT C&S（Concept & Sync）を「管理職AIの判断基準」として埋め込み、チャット開発（Vibe Coding）の品質崩壊を防ぐための建築様式。
 *   **Action**: この理論を実践するためのスキル実装は、下部の **[4. AI螺旋(Spiral)設計スキル](#4-ai螺旋spiral設計スキル増築しても壊れない構造を作る-mit-cs)** にあります。
 
 ### 3. [AI Talent & Tech Integration Report (2026 Q1)](./02_Engineering/Reports/AI_Talent_Tech_Integration_2026Q1.html)
