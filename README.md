@@ -8,9 +8,12 @@ AIとの共進化を探求する、野良AIエンジニアの研究ログ & ツ�
 ## 📂 Featured Tools (便利ツール)
 一般ユーザーから開発者まで使える、実用的なプロンプト・自衛キット。
 
-### 🔕 [Gemini Safety Protocol Kit (Anti-BAN Shield)](./01_Tools/Google_Gemini_Safety_Protocol.md) (廃止)
-*   **状態**: **公開停止 / 廃止済み**
-*   **理由**: 近年のGemini 3.5のセーフティフィルター強化に伴い、このプロトコル自体が「検疫地雷」として誤検知され、AIの過剰な拒否応答（ガードレールの誤作動）を引き起こす有害なデバフとなるため、公開を停止しました。詳細はリンク先を参照してください。
+### 🧮 [AG Scientific Co-Processor (`ag-calc`)：決定論的数理コプロセッサ](./01_Tools/ag-calc/User_guide.md) 【New!】
+*   **概要**: AIエージェントに使い捨てスクリプト（`scratch.py`）を自作させることによる「トークン爆発（95%浪費）」と「コンテキストのヘドロ化（知能低下）」を物理的に根絶する、ゼロ依存（Python標準ライブラリのみ）の決定論的数理コプロセッサCLI。
+*   **対象**: Antigravity, Claude Code, Cursor, 自律エージェント運用者。
+*   **主要機能**: 安全なAST数理評価、SI接頭辞（`10k`, `2.2u`）、並列合成抵抗（`parallel`）、$n$乗根、状態保持（Ansメモリー・変数チェーン）、PTZ画角・サッカード幾何、X文字数判定（280pt）。
+*   **実装・ガイド**: [User Guide](./01_Tools/ag-calc/User_guide.md) / [SKILL.md](./01_Tools/ag-calc/SKILL.md) / [Python Script](./01_Tools/ag-calc/scripts/ag_calc.py)
+
 
 ---
 
