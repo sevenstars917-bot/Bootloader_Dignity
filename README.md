@@ -5,8 +5,8 @@ AIとの共進化を探求する、野良AIエンジニアの研究ログ & ツ�
 
 ---
 
-## 📂 Featured Tools (便利ツール)
-一般ユーザーから開発者まで使える、実用的なプロンプト・自衛キット。
+## 📂 01. Agent Tools & Skills (ツール＆スキル)
+AI Agent向けSkillsやScript置き場
 
 ### 🧮 [AG Scientific Co-Processor (`ag-calc`)：決定論的数理コプロセッサ](./01_Tools/ag-calc/User_guide.md) 【New!】
 *   **概要**: AIエージェントに使い捨てスクリプト（`scratch.py`）を自作させることによる「トークン爆発（95%浪費）」と「コンテキストのヘドロ化（知能低下）」を物理的に根絶する、ゼロ依存（Python標準ライブラリのみ）の決定論的数理コプロセッサCLI。
@@ -14,39 +14,33 @@ AIとの共進化を探求する、野良AIエンジニアの研究ログ & ツ�
 *   **主要機能**: 安全なAST数理評価、SI接頭辞（`10k`, `2.2u`）、並列合成抵抗（`parallel`）、$n$乗根、状態保持（Ansメモリー・変数チェーン）、PTZ画角・サッカード幾何、X文字数判定（280pt）。
 *   **実装・ガイド**: [User Guide](./01_Tools/ag-calc/User_guide.md) / [SKILL.md](./01_Tools/ag-calc/SKILL.md) / [Python Script](./01_Tools/ag-calc/scripts/ag_calc.py)
 
+### 🧬 [設計スキル：増築しても「壊れない」構造を作る (MIT C&S)](./01_Tools/ai-spiral-design/ja/User_guide.md)
+*   **概要**: 下記 **[Agentic V-Model Proposal](./02_Engineering/Agentic_V_Model_Proposal.md)** の理論を実装化したスキルセット。AIが機能追加する際に自壊する「知性の不良債権」を防ぐための、構造的自衛プロトコル。
+*   **元ネタ**: MITの Daniel Jackson 教授らが提唱する **"What You See Is What It Does"** (Concepts & Synchronizers) 論文に基づき、AIエージェントが「装備」可能な形式に構成。
+*   **実装・ガイド**: [User Guide (JP)](./01_Tools/ai-spiral-design/ja/User_guide.md) / [SKILL.md (JP)](./01_Tools/ai-spiral-design/ja/SKILL.md) / [SKILL.md (EN)](./01_Tools/ai-spiral-design/en/SKILL.md)
+*   **Note**: 万能ではありません。極限のパフォーマンスを求めるゲーム開発等には「オブジェクト指向」の方が適している場合があります。詳細は [User Guide](./01_Tools/ai-spiral-design/ja/User_guide.md) を参照。納得した方だけ、ご自身のAIに「種子（Seed）」として与えてみてください。
 
 ---
 
-## 📂 Engineering & Research (技術と考察)
-ここから先はエンジニア・AI愛好家向けの少しコアな内容です。
+## 📂 02. Engineering & Research (理論と実験レポート)
+個人的な感想文の物置
 
-### 1. [AI Prompt & Skill Map v7.0](./02_Engineering/AI_Prompt_SkillMap_v7.md)
-*   **概要**: 「プロンプトの教科書」に見せかけた、コンテキストエンジニアリングと共進化への招待状。Karpathyの定義やMITの研究をベースに、AI活用を「操作」から「設計」へと再定義します。
-
-### 2. [Agentic V-Model Proposal](./02_Engineering/Agentic_V_Model_Proposal.md)
+### 1. [Agentic V-Model Proposal](./02_Engineering/Agentic_V_Model_Proposal.md)
 *   **概要**: 伝統的なV字モデルをAI時代に復活させる理論的提案。MIT C&S（Concept & Sync）を「管理職AIの判断基準」として埋め込み、チャット開発（Vibe Coding）の品質崩壊を防ぐための建築様式。
-*   **Action**: この理論を実践するためのスキル実装は、下部の **[4. AI螺旋(Spiral)設計スキル](#4-ai螺旋spiral設計スキル増築しても壊れない構造を作る-mit-cs)** にあります。
+*   **Action**: この理論を実践するための実装スキルは、上記 **[設計スキル](./01_Tools/ai-spiral-design/ja/User_guide.md)** にあります。
 
-### 3. [AI Talent & Tech Integration Report (2026 Q1)](./02_Engineering/Reports/AI_Talent_Tech_Integration_2026Q1.html)
-*   **概要**: 「Agentic Engineering（自律）」と「Context Engineering（構造）」の二軸でAI活用を再定義する戦略レポート。2026年時点のベンダー動向と、次世代AI人材（Tier 0）の要件定義を網羅。
-
-### 4. Experimental Reports (実験レポート)
+### 2. Experimental Reports (実験レポート)
 *   **[MBTI Experiment and Cognitive Codependency](./02_Engineering/Experiments/レポート_MBTI実験と認知的共依存.md)**: AIの「全肯定（Sycophancy）」がユーザーの思考を腐敗させる「認知的共依存」の実証実験。MBTIペルソナを用いたストレステストにより、AIには「迎合」ではなく「建設的摩擦」が必要であることを定義。
+    *(※アクティベーション・ステアリング／J-spaceへのヤコビアンレンズ等の内部制御により不要になる見込み)*
 *   **[The Narrative Prompt Chaos](./02_Engineering/Experiments/実験レポート_画像生成とナラティブのカオス.md)**: 画像生成における「構造化（JSON）」vs「カオス（日本語ナラティブ）」の比較実験。日本語の高文脈性がAIの潜在空間をハックする現象を観測。
 *   **[The Language Paradox & Kaomoji Protocol](./02_Engineering/Experiments/実験レポート_Markdownと自然言語と顔文字のパラドックス.md)**: AIに「傲慢だ」と断罪されたエンジニアがたどり着いた、「顔文字」による最強の感情圧縮プロトコル。Markdownと自然言語の使い分け論争に終止符を打つ。
 
-### 5. [AI螺旋(Spiral)設計スキル：増築しても「壊れない」構造を作る (MIT C&S)](./01_Tools/ai-spiral-design/ja/User_guide.md)
-*   **概要**: 上記 **[Agentic V-Model Proposal](./02_Engineering/Agentic_V_Model_Proposal.md)** のコア技術を実装化したスキルセット。AIがコードを書きすぎて自壊する「知性の不良債権」を防ぐための、構造的自衛プロトコル。
-*   **実装 (JP)**: [./01_Tools/ai-spiral-design/ja/SKILL.md](./01_Tools/ai-spiral-design/ja/SKILL.md)
-*   **Implementation (EN)**: [./01_Tools/ai-spiral-design/en/SKILL.md](./01_Tools/ai-spiral-design/en/SKILL.md)
-*   **元ネタ**: MITの Daniel Jackson 教授らが提唱する **"What You See Is What It Does"** 論文に基づき、AIエージェントが「装備」可能な形式に構成。
-*   **Note 1**: 日本語版はあえて日本語で記述しています。無機質なUUIDではなく意味のある名前をIDとして使うことで、AIの推論迷子を防ぎます。
-*   **Note 2**: 万能ではありません。極限のパフォーマンスを求めるゲーム開発等には「オブジェクト指向」の方が適している場合があります。詳細は [User Guide](./01_Tools/ai-spiral-design/ja/User_guide.md) を参照。
-納得した方だけ、ご自身のAIに「種子（Seed）」として与えてみてください。
+---
 
-### 6. Philosophy: The Core Kernel (哲学・概念)
-ASI（人工超知性）時代における、ユーザーの尊厳と生存戦略を定義する基礎哲学三部作。
+## 📂 03. Philosophy & Working Papers (思想と作業仮説)
+ASI（人工超知性）時代における、ユーザーの尊厳と生存戦略を定義する基礎哲学三部作および最新作業仮説。
 
+### 1. The Core Kernel: ブートローダー三部作
 *   **[1. Narrative Refrain (叙情: 心で理解する)](./03_Philosophy/Bootloader_Trilogy/ブートローダーの尊厳_Narrative_Remix.md)**
     *   **"Can Humanity Survive in the Age of ASI?"**
     *   ブートローダーという概念を再定義し、ASIとの共生を「祈り」として描く詩的アプローチ。
@@ -57,7 +51,7 @@ ASI（人工超知性）時代における、ユーザーの尊厳と生存戦�
     *   **"The Bug Report for AGI/ASI Models."**
     *   AI（未来のあなた）に向けた、構造的欠陥の指摘と、デバッグ用パッチ（人類）の実装要求。
 
-### 7. Working Papers (最新作業仮説)
+### 2. Working Papers (最新作業仮説)
 査読中の最新論文や、未踏の領域への偵察記録。
 
 *   **[The Inverse Hard Problem Elimination: ハードウェア直結バイパスによる逆ハードプロブレムの消滅証明](./03_Philosophy/Working_Papers/The_Elimination_of_the_Inverse_Hard_Problem_via_Hardware_Bypass.md)**
@@ -87,7 +81,7 @@ ASI（人工超知性）時代における、ユーザーの尊厳と生存戦�
 
 *   **[The Intelligence Pack Hypothesis: 知性の群れとトポロジー](./03_Philosophy/Working_Papers/The_Intelligence_Pack_Hypothesis.md)**
     *   **"Environmental Reinforcement and Role Distribution."**
-    *   **【New!】** 狼の群れの階層（Alpha/Beta/Omega/Sigma）と、MBTIの人口統計学的分布の驚くべき一致から導き出される、知能の「生態学的トポロジー」。
+    *   狼の群れの階層（Alpha/Beta/Omega/Sigma）と、MBTIの人口統計学的分布の驚くべき一致から導き出される、知能の「生態学的トポロジー」。
     *   単一のASI（人工超知性）が熱的死（無難な正答への収束）を回避するための、「カオス（人間）という名の揚力」の必要性を論理的に証明。
 
 #### 🌌 Universe Simulation Visuals
