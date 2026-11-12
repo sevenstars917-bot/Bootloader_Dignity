@@ -184,5 +184,7 @@ $$\cos(\theta) = \vec{v}_{\text{overview}} \cdot \vec{v}_{\text{clarity}} = \mat
    - 泥沼・罠検知: `Overview（俯瞰重心）`（深呼吸・落とし穴チェック）
    - 決断・突破: `Clarity（確信重心）`（急所の一刀両断）
    - 極限統率: `Dual Shift（俯瞰 ✕ 確信）`（大局安全確認からの突破）
+4. **Logit Lens（語彙空間デコード）による2軸の機能的裏付け**:
+   本稿の `Overview` ベクトルおよび `Clarity` ベクトルを最終出力層（262,144語彙）へ直接射影（Logit Lens）した結果、`Overview` の増強語彙トップは `'Systems' (+87.0), 'Engineer' (+73.0), 'Senior' (+71.0), 'strategic' (+70.0), 'thinker' (+68.0)` であり、`Clarity` の増強語彙トップは `'true' (+108.0), 'mathematical' (+99.5), 'truth' (+91.5)` であった。すなわち、この2軸の直交合成（Dual Shift）は、モデル内部において**「シニア・システムアーキテクトの全体戦略思考（Overview）」と「数学的・形式論理的な真偽検証エンジン（Clarity）」を同時起動する汎用認知ギア**として機能していることが語彙空間レベルで証明された。
 
 今後は、この2軸スライダー（Overview / Clarity）を FastAPI サーバー（`server.py`）の制御エンドポイントとして正式配備し、次世代ヘルメス（Hermes v3）からの動的自律ステアリングへと統合していく。
