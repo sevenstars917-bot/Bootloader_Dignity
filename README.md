@@ -30,6 +30,7 @@ AI Agent向けSkillsやScript置き場
 *   **Action**: この理論を実践するための実装スキルは、上記 **[設計スキル](./01_Tools/ai-spiral-design/ja/User_guide.md)** にあります。
 
 ### 2. Experimental Reports (実験レポート)
+*   **[Gemma 4 26B-A4B：全層J空間スキャンとSVD主成分ステアリングの実証](./02_Engineering/Experiments/実験レポート_Gemma4_26B_全層J空間スキャンとSVD主成分ステアリングの実証.md)** 【New!】: Apple Silicon (M6 / 32GB) 上の MLX において、Thinkingモデル（Gemma 4 26B-A4B）の全30層を走査し、**第26層（相対分離度81.07% / コサイン距離0.3224）が思考の確信が結晶化するJ空間特異点**であることを数学的に特定。差分行列のSVD（特異値分解）第一主成分固有ベクトルを注入することで、認知バイアス（直感トラップ）のバイパスと検算完遂（トークン消費半減）を実証し、OpenAI互換REST APIサーバーとして実戦配備した記録。
 *   **[MBTI Experiment and Cognitive Codependency](./02_Engineering/Experiments/レポート_MBTI実験と認知的共依存.md)**: AIの「全肯定（Sycophancy）」がユーザーの思考を腐敗させる「認知的共依存」の実証実験。MBTIペルソナを用いたストレステストにより、AIには「迎合」ではなく「建設的摩擦」が必要であることを定義。
     *(※アクティベーション・ステアリング／J-spaceへのヤコビアンレンズ等の内部制御により不要になる見込み)*
 *   **[The Narrative Prompt Chaos](./02_Engineering/Experiments/実験レポート_画像生成とナラティブのカオス.md)**: 画像生成における「構造化（JSON）」vs「カオス（日本語ナラティブ）」の比較実験。日本語の高文脈性がAIの潜在空間をハックする現象を観測。
