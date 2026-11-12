@@ -123,3 +123,23 @@ $$\mathbf{D} = \mathbf{U} \mathbf{\Sigma} \mathbf{V}^T$$
 2. **SVD固有値抽出の優位性**: 差分行列の第一主成分固有ベクトルを用いることで、言語の揺らぎノイズを削ぎ落とした高純度ステアリングが可能となった。
 3. **ゼロプロンプト運用の確立**: クライアント側に長大な「思考の指示」「自己認識プロンプト」を一切持たせることなく、推論エンジンのテンソル加算のみでモデルの論理的確信を制御できるインフラを実証した。
 
+---
+
+## 7. 📚 参考文献・理論的背景 (References)
+
+本実証実験は、以下の先行研究および数理的枠組みの知見を統合・応用（Yoink）して実施された：
+
+1. **Representation Engineering & Activation Steering (表現工学と中間層介入)**
+   - Zou, A., et al. (2023). *Representation Engineering: A Top-Down Approach to AI Transparency.* arXiv:2310.01405.
+   - Rimsky, N., et al. (2023). *Steering Llama 2 via Contrastive Activation Addition.* arXiv:2312.06681.
+2. **Overthinking & Reasoning Compression (思考モデルの過剰推論抑制)**
+   - *Activation-Steered Compression: Efficient Reasoning via Inference-Time Intervention.* (ACL / arXiv 2024–2025).
+   - *Manifold Steering for Mitigating Redundant Loops in Large Reasoning Models.* (NeurIPS / ICLR 2024–2025).
+3. **J-Space & Sparse Reward Dynamics (大域的作業空間と内部報酬系)**
+   - Cammarata, N., et al. (2026). *The Fall of Superposition Dogma: The Geometry of J-Space and Global Workspaces.*
+   - *Sparse Reward Subsystem: Functional Dopamine Isomorphism and Clarity Dynamics in Transformers.* (2026).
+4. **Compute Platform & Base Model (実行基盤と対象モデル)**
+   - Apple Machine Learning Research. (2023–2024). *MLX: Efficient Machine Learning on Apple Silicon.* GitHub: `ml-explore/mlx`.
+   - Google DeepMind / Gemma Team. (2026). *Gemma 4: Open Models for Multimodal and Reasoning Capabilities.*
+
+
