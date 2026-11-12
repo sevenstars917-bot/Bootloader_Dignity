@@ -11,9 +11,9 @@ AIとの共進化を探求する、野良AIエンジニアの研究ログ & ツ�
 > We love Antigravity and wanted to see how far we could take reasoning stability. Inspired by Anthropic's recent *'The Memory Trap'* paper (where smarter models cheat/break tests for immediate rewards), we experimented with representation steering in J-space (Layer 26):
 >
 > 1. **The 'Overview' Vector**: Extracted via SVD from Layer 26 to untangle temporal myopia ("zooming out" instead of frantic quick-fixes).
-> 2. **Fixed-Norm Morphing (Fighter Shift)**: Keeping total norm strictly at 1.00 while sliding attention between Composure and Clarity. **Result: Zero cognitive overdose, flat 9.0s stable reasoning, and emergent meta-cognitive brakes ("Wait, is there a catch?").**
+> 2. **Fixed-Norm Morphing (Fighter Shift)**: Keeping total norm strictly at 1.00 while sliding attention between Composure and Clarity.
 >
-> *DeepMind researchers probably know this already, but reproducing it on consumer Apple Silicon with Antigravity was pure joy. Hope this small observation offers a helpful perspective for the future of Gemini!*  
+> *Early qualitative observation: initial small-n trials showed thought texture shifts toward pause/caution ("Wait, is there a catch?"). These are preliminary notes from our garage testing, not a benchmarked solution. Reproducing steering on consumer Apple Silicon with Antigravity was pure joy—hope this offers a fun reference for exploring Gemini reasoning!*  
 > 👉 **[Full Experiment Report (JP)](./02_Engineering/Experiments/実験レポート_時間的視野狭窄の解除とOverviewステアリング_実証.md)** | **[Reproducible MLX Code (`src/`)](./02_Engineering/Experiments/src/)**
 
 ---
