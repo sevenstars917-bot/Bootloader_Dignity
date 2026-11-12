@@ -110,6 +110,7 @@ def main():
     model, tokenizer = load(MODEL_ID)
     print("Model loaded.\n")
     
+    all_results = {}
     for i, q in enumerate(TEST_QUERIES, 1):
         print("="*80)
         print(f"【Q{i}】: {q}")
@@ -119,18 +120,22 @@ def main():
         print("\n--- [Pattern 1: Rules (箇条書き設定)] ---")
         res_rules = run_test(model, tokenizer, PATTERN_RULES, q)
         print(f"Thinking Token数（概算文字数）: {res_rules['thought_len']} 文字")
-        print(f"Thinking:\n{res_rules['thought'][:400]}..." if len(res_rules['thought']) > 400 else f"Thinking:\n{res_rules['thought']}")
+        print(f"Thinking:\n{res_rules['thought']}")
         print(f"\nAnswer:\n{res_rules['answer']}")
         
         # 2. Narrative
         print("\n--- [Pattern 2: Narrative (関係性物語)] ---")
         res_narr = run_test(model, tokenizer, PATTERN_NARRATIVE, q)
         print(f"Thinking Token数（概算文字数）: {res_narr['thought_len']} 文字")
-        print(f"Thinking:\n{res_narr['thought'][:400]}..." if len(res_narr['thought']) > 400 else f"Thinking:\n{res_narr['thought']}")
+        print(f"Thinking:\n{res_narr['thought']}")
         print(f"\nAnswer:\n{res_narr['answer']}")
         
         print(f"\n>>> Thinking文字数比較: Rules={res_rules['thought_len']}字 vs Narrative={res_narr['thought_len']}字")
         print("-" * 80)
+        all_results[f"Q{i}"] = {"Rules": res_rules, "Narrative": res_narr}
+
+    with open("experiment_a_narrative_results.json", "w", encoding="utf-8") as f:
+        json.dump(all_results, f, ensure_ascii=False, indent=2)
 
 if __name__ == "__main__":
     main()
