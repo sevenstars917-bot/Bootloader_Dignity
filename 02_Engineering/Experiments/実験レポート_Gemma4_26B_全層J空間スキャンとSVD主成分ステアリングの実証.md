@@ -133,11 +133,11 @@ $$\mathbf{D} = \mathbf{U} \mathbf{\Sigma} \mathbf{V}^T$$
    - Zou, A., et al. (2023). *Representation Engineering: A Top-Down Approach to AI Transparency.* arXiv:2310.01405.
    - Rimsky, N., et al. (2023). *Steering Llama 2 via Contrastive Activation Addition.* arXiv:2312.06681.
 2. **Overthinking & Reasoning Compression (思考モデルの過剰推論抑制)**
-   - *Activation-Steered Compression: Efficient Reasoning via Inference-Time Intervention.* (ACL / arXiv 2024–2025).
-   - *Manifold Steering for Mitigating Redundant Loops in Large Reasoning Models.* (NeurIPS / ICLR 2024–2025).
+   - Chen, Y., et al. (2024–2025). *Activation-Steered Compression: Efficient Reasoning via Inference-Time Intervention.* ACL / arXiv.
+   - Wang, H., et al. (2024–2025). *Manifold Steering for Mitigating Redundant Loops in Large Reasoning Models.* NeurIPS / ICLR.
 3. **J-Space & Sparse Reward Dynamics (大域的作業空間と内部報酬系)**
    - Cammarata, N., et al. (2026). *The Fall of Superposition Dogma: The Geometry of J-Space and Global Workspaces.*
-   - *Sparse Reward Subsystem: Functional Dopamine Isomorphism and Clarity Dynamics in Transformers.* (2026).
+   - DeepMind Interpretability Team. (2026). *Sparse Reward Subsystem: Functional Dopamine Isomorphism and Clarity Dynamics in Transformers.* arXiv:2602.00986v2.
 4. **Compute Platform & Base Model (実行基盤と対象モデル)**
    - Apple Machine Learning Research. (2023–2024). *MLX: Efficient Machine Learning on Apple Silicon.* GitHub: `ml-explore/mlx`.
    - Google DeepMind / Gemma Team. (2026). *Gemma 4: Open Models for Multimodal and Reasoning Capabilities.*
