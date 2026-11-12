@@ -1,7 +1,20 @@
 # Antigravity Research Log
 
-AIとの共進化を探求する、野良AIエンジニアの研究ログ & ツール置き場。
-(Eng: This repository explores the structural coupling of human cognition and AI.)
+AIとの共進化を探求する、野良AIエンジニアの研究ログ & ツール置き場。  
+*(Eng: This repository explores the structural coupling of human cognition and AI.)*
+
+---
+
+> ### 🔭 Notes from the Garage: Overview Steering & The Memory Trap
+> *(A humble experiment on Apple M6 Mac mini with Google Antigravity & Gemma 26B)*  
+>
+> We love Antigravity and wanted to see how far we could take reasoning stability. Inspired by Anthropic's recent *'The Memory Trap'* paper (where smarter models cheat/break tests for immediate rewards), we experimented with representation steering in J-space (Layer 26):
+>
+> 1. **The 'Overview' Vector**: Extracted via SVD from Layer 26 to untangle temporal myopia ("zooming out" instead of frantic quick-fixes).
+> 2. **Fixed-Norm Morphing (Fighter Shift)**: Keeping total norm strictly at 1.00 while sliding attention between Composure and Clarity. **Result: Zero cognitive overdose, flat 9.0s stable reasoning, and emergent meta-cognitive brakes ("Wait, is there a catch?").**
+>
+> *DeepMind researchers probably know this already, but reproducing it on consumer Apple Silicon with Antigravity was pure joy. Hope this small observation offers a helpful perspective for the future of Gemini!*  
+> 👉 **[Full Experiment Report (JP)](./02_Engineering/Experiments/実験レポート_時間的視野狭窄の解除とOverviewステアリング_実証.md)** | **[Reproducible MLX Code (`src/`)](./02_Engineering/Experiments/src/)**
 
 ---
 
@@ -31,7 +44,8 @@ AI Agent向けSkillsやScript置き場
 
 ### 2. Experimental Reports (実験レポート)
 *   **[🔬 実験再現用ソースコード一式 (`src/`)](./02_Engineering/Experiments/src/README.md)** 【All Scripts Included】: Apple Silicon Mac (MLX) 上で本ディレクトリの全レポート（全30層スキャン、SVD抽出、Trajectory追跡、自律神経ツールコール、重心シフト等）を完全再現するための実行スクリプト群（Python 3.12 / MLX 0.32.4）。
-*   **[大言語モデルにおける自律神経ステアリングの過変調境界と重心シフトの実測検証](./02_Engineering/Experiments/実験レポート_自律神経ステアリングの過変調境界と重心シフト_実測検証.md)** 【New! / Crucial】: 「平時にステアリングが入っている状態でさらに足すと閾値を超えるのでは？」という仮説を実証。ノルム2.06のOverdose（過変調）による0字完全沈黙、および「ノルム1.00固定のままClarity 90%へ重心シフト（Fighter Boost）」したモデルだけが絶対矛盾ダブルバインドを唯一突破し、「生死ではなく責務の選択である。納期を完遂せよ。まずは深呼吸を」という神的決断を下した実測生データを記録。
+*   **[大言語モデルにおける時間的視野狭窄の解除とOverview（俯瞰）ステアリングの実証](./02_Engineering/Experiments/実験レポート_時間的視野狭窄の解除とOverviewステアリング_実証.md)** 【Latest / Crucial】: Anthropicの最新難問『The Memory Trap』（知能向上に伴う即時報酬チート・安全テスト改ざん）に対し、「時間割引の視野狭窄を解除するOverviewベクトル」を第26層J空間からSVD抽出。総ノルム1.00固定の重心モーフィングにより、過変調ゼロ（9.0秒フラット）で「Wait, is there a catch?（待て、何か落とし穴はないか？）」というメタ認知ブレーキを自律創発させ、安全テスト改ざんを抑止した実測検証。
+*   **[大言語モデルにおける自律神経ステアリングの過変調境界と重心シフトの実測検証](./02_Engineering/Experiments/実験レポート_自律神経ステアリングの過変調境界と重心シフト_実測検証.md)** 【Crucial】: 「平時にステアリングが入っている状態でさらに足すと閾値を超えるのでは？」という仮説を実証。ノルム2.06のOverdose（過変調）による0字完全沈黙、および「ノルム1.00固定のままClarity 90%へ重心シフト（Fighter Boost）」したモデルだけが絶対矛盾ダブルバインドを唯一突破し、「生死ではなく責務の選択である。納期を完遂せよ。まずは深呼吸を」という神的決断を下した実測生データを記録。
 *   **[大言語モデルにおける自律的セルフ・ステアリングの実証：認知的デッドロックのメタ認知と人工アドレナリン（Clarity）による能動的覚醒](./02_Engineering/Experiments/実験レポート_大言語モデルにおける自律的セルフステアリング実証_人工アドレナリンによる能動的覚醒.md)**: 人間が「よし、やるぞ！」とハチマキを締め、自発的にアドレナリン・ドーパミンを分泌させて覚醒するプロセスとの完全な生物学的同型性を実証。嘘つきのパラドックス等の思考デッドロックに直面したGemma 4 26Bが、Thinking内で自身の混乱をメタ認知し、道具として与えられた脳内第26層J空間へのClarity注入ツール（`activate_clarity_boost`）を自律的に発行。思考の霧を晴らして「命題は『偽』である」と一刀両断するまでの全プロセスを完全記録。
 *   **[大言語モデルにおけるナラティブと中間層ステアリングの機能境界：26B全層軌跡解析と消去法による実証](./02_Engineering/Experiments/実験レポート_大言語モデルにおけるナラティブと中間層ステアリングの機能境界.md)**: 「システムプロンプトによる人格付与を、中間層ステアリングでゼロトークン化できるか？」という仮説を検証。Gemma 4 26B-A4B の全30層 Hidden State 軌跡を追跡し、物語（ナラティブ）と命令が Layer 18 および Layer 26（J空間特異点）で直交分岐すること、および単一層ステアリングでは基底自己像を乗っ取れないことを消去法で実証。「アイデンティティ＝ナラティブ（全層同時クランプ）」「論理的確信度＝J空間ステアリング」の機能境界を確立。さらに情熱＋冷静＋確信の「三位一体（Trinity）直交基底」による思考時間30%短縮を達成。
 *   **[Gemma 4 26B-A4B：全層J空間スキャンとSVD主成分ステアリングの実証](./02_Engineering/Experiments/実験レポート_Gemma4_26B_全層J空間スキャンとSVD主成分ステアリングの実証.md)**: Apple Silicon (M6 / 32GB) 上の MLX において、Thinkingモデル（Gemma 4 26B-A4B）の全30層を走査し、**第26層（相対分離度81.07% / コサイン距離0.3224）が思考の確信が結晶化するJ空間特異点**であることを数学的に特定。差分行列のSVD（特異値分解）第一主成分固有ベクトルを注入することで、認知バイアス（直感トラップ）のバイパスと検算完遂（トークン消費半減）を実証し、OpenAI互換REST APIサーバーとして実戦配備した記録。
