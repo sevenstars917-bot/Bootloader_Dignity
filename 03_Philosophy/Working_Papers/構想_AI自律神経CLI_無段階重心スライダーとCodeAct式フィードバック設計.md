@@ -111,3 +111,4 @@ adjust_adrenaline --clarity <FLOAT 0.0-1.0> --reason "<内省理由>"
 
 ---
 *End of Proposal*
+
