@@ -72,7 +72,7 @@ def run_test(model, tokenizer, system_prompt, query):
         model,
         tokenizer,
         prompt=prompt,
-        max_tokens=1024,
+        max_tokens=2500,
         sampler=sampler,
         verbose=False
     )

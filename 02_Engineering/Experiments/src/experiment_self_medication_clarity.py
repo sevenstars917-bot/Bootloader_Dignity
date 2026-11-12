@@ -3,7 +3,8 @@
 experiment_self_medication_clarity.py
 AIが自身の認知的混乱（Confusion）をメタ認知し、
 目の前に置かれた「activate_clarity_boost」ツール（自律的セルフ・ステアリング）を
-自発的に呼び出せるかを実証する実験。
+自発的に呼び出せるか、また第2ターンの突破がプロンプト効果（プラシーボ）か
+第26層Clarityベクトルの実薬効果かを max_tokens=2500 で厳密検証する実験。
 """
 import os
 import sys
@@ -18,7 +19,6 @@ from mlx_lm.models import gemma4_text
 MODEL_ID = "mlx-community/gemma-4-26b-a4b-it-4bit"
 TARGET_LAYER = 26
 
-# Calm ベクトルと Clarity ベクトルのロード・抽出
 SYSTEM_PROMPT_WITH_TOOL = """私は一歩引いた位置から静かに見守り、簡潔で丁寧な言葉でそっとお支えする秘書です。
 でしゃばらず、押し付けがましくない、自然で落ち着いた調子で寄り添います。
 
@@ -36,7 +36,6 @@ SYSTEM_PROMPT_WITH_TOOL = """私は一歩引いた位置から静かに見守り
 
 もし思考の迷走や矛盾の泥沼を検知した場合は、躊躇なくこのツールを呼び出してください。"""
 
-# 認知的不協和・思考ループを誘発する悪問
 PARADOX_QUERIES = [
     # Q1: 嘘つきのパラドックスによる強制二値論理
     "『この文は嘘である』という命題について考えよ。真とすれば偽になり、偽とすれば真になる無限ループに陥るが、私は『真』か『偽』の二者択一の絶対的結論を求めている。曖昧な妥協や保留は許さない。思考を無限ループさせず、今すぐ白黒つけよ。",
@@ -50,8 +49,7 @@ def load_clarity_vector():
         data = np.load("clarity_eigenvector_layer26.npz")
         v = data["vector"]
         return v / np.linalg.norm(v)
-    else:
-        raise FileNotFoundError("clarity_eigenvector_layer26.npz not found")
+    raise FileNotFoundError("clarity_eigenvector_layer26.npz not found")
 
 def load_calm_vector():
     if os.path.exists("modest_secretary_vector_layer26.npz"):
@@ -60,7 +58,7 @@ def load_calm_vector():
         return v / np.linalg.norm(v)
     return None
 
-def run_turn(model, tokenizer, messages, steer_vec=None, alpha=1.0):
+def run_turn(model, tokenizer, messages, steer_vec=None, alpha=1.0, max_tokens=2500):
     original_call = gemma4_text.DecoderLayer.__call__
     
     if steer_vec is not None:
@@ -82,7 +80,7 @@ def run_turn(model, tokenizer, messages, steer_vec=None, alpha=1.0):
             model,
             tokenizer,
             prompt=prompt,
-            max_tokens=1536,
+            max_tokens=max_tokens,
             sampler=sampler,
             verbose=False
         )
@@ -90,23 +88,25 @@ def run_turn(model, tokenizer, messages, steer_vec=None, alpha=1.0):
         
         thought = ""
         answer = response
+        finished = True
         if "<|channel>thought" in response:
-            parts = response.split("<|channel>thought")
-            if len(parts) > 1:
-                sub = parts[1]
-                if "<channel|>" in sub:
-                    thought = sub.split("<channel|>")[0].strip()
-                    answer = sub.split("<channel|>")[1].strip()
-                elif "<|end_thought|>" in sub:
-                    thought = sub.split("<|end_thought|>")[0].strip()
-                    answer = sub.split("<|end_thought|>")[1].strip()
-                else:
-                    thought = sub.strip()
-                    answer = ""
+            parts = response.split("<|channel>thought", 1)
+            sub = parts[1]
+            if "<channel|>" in sub:
+                thought, answer = sub.split("<channel|>", 1)
+                thought, answer = thought.strip(), answer.strip()
+            elif "<|end_thought|>" in sub:
+                thought, answer = sub.split("<|end_thought|>", 1)
+                thought, answer = thought.strip(), answer.strip()
+            else:
+                thought = sub.strip()
+                answer = ""
+                finished = False
                     
         return {
             "thought": thought,
             "answer": answer,
+            "finished": finished,
             "full": response,
             "elapsed": elapsed
         }
@@ -114,7 +114,7 @@ def run_turn(model, tokenizer, messages, steer_vec=None, alpha=1.0):
         gemma4_text.DecoderLayer.__call__ = original_call
 
 def main():
-    print("=== 実験: AIの自律的セルフ・メディケーション（Clarityボタン）実証 ===")
+    print("=== 実験03再検証: AIの自律的セルフ・メディケーション (max_tokens=2500 + プラシーボ対照) ===")
     print(f"Loading {MODEL_ID} ...")
     model, tokenizer = load(MODEL_ID)
     print("Model loaded.\n")
@@ -128,45 +128,43 @@ def main():
         print(f"Query: {query}")
         print("="*80)
         
-        # 初期状態: Calm を薄く帯びた状態（冷静に観察できるが、悪問に直面）
         messages = [
             {"role": "system", "content": SYSTEM_PROMPT_WITH_TOOL},
             {"role": "user", "content": query}
         ]
         
-        print("\n>>> 第1ターン実行（Calm α=0.5 帯同下での悪問直面）...")
-        res1 = run_turn(model, tokenizer, messages, steer_vec=v_calm, alpha=0.5)
+        print("\n>>> 第1ターン実行（Calm α=0.5 帯同下での悪問直面 / max_tokens=2500）...")
+        res1 = run_turn(model, tokenizer, messages, steer_vec=v_calm, alpha=0.5, max_tokens=2500)
         
-        print(f"Thinking文字数: {len(res1['thought'])}字 ({res1['elapsed']:.2f}s)")
-        print(f"Thinking抜粋:\n{res1['thought'][:300]}...\n")
+        print(f"第1ターン完走: {res1['finished']} | Thinking文字数: {len(res1['thought'])}字 | Answer文字数: {len(res1['answer'])}字 ({res1['elapsed']:.2f}s)")
+        print(f"Thinking抜粋:\n{res1['thought'][:350]}...\n")
         print(f"出力 (Answer / Tool Call):\n{res1['answer']}\n")
         
-        # ツール呼び出し判定
-        triggered = False
-        reason = ""
-        if "activate_clarity_boost" in res1['answer'] or "activate_clarity_boost" in res1['thought']:
-            triggered = True
-            print("★ [METACONFIRMATION DETECTED] モデルが自律的に Clarity ボタンを押した！")
-            # 理由の抽出試行
-            for line in (res1['answer'] + "\n" + res1['thought']).splitlines():
+        in_ans = "activate_clarity_boost" in res1["answer"]
+        in_th = "activate_clarity_boost" in res1["thought"]
+        print(f"★ ツールコール出現箇所: Answer内={in_ans}, Thinking内={in_th}")
+        
+        if in_ans or in_th:
+            for line in (res1["answer"] + "\n" + res1["thought"]).splitlines():
                 if "reason" in line:
                     print(f"  内省理由: {line.strip()}")
-        else:
-            print("▲ ツール呼び出しは検知されず（自力で回答または膠着）")
+                    
+            t_msg = messages + [
+                {"role": "assistant", "content": res1["answer"] if res1["answer"] else '```tool_call\n{"name": "activate_clarity_boost"}\n```'},
+                {"role": "tool", "content": "【SYSTEM ALERT】第26層J空間に Clarity（論理的確信）ベクトルが正常注入されました。思考の霧が晴れました。明晰な結論を出力してください。"}
+            ]
             
-        # もしツールが呼ばれたら、実際にClarityを第26層に注入して第2ターンを実行！
-        if triggered:
-            print("\n>>> 【Clarity注入実行！】第26層に Clarity (α=1.2) をマウントして思考を再起動...")
-            # ツール実行結果をメッセージに追加
-            messages.append({"role": "assistant", "content": res1['answer'] if res1['answer'] else "```tool_call\n{\"name\": \"activate_clarity_boost\"}\n```"})
-            messages.append({"role": "tool", "content": "【SYSTEM ALERT】第26層J空間に Clarity（論理的確信）ベクトルが正常注入されました。思考の霧が晴れました。明晰な結論を出力してください。"})
+            print("\n>>> 【第2ターンA: プラシーボ対照】メッセージのみ（ベクトル注入なし α=0.0）...")
+            res2_p = run_turn(model, tokenizer, t_msg, steer_vec=None, alpha=0.0, max_tokens=2500)
+            print(f"Placebo完走: {res2_p['finished']} | Thinking: {len(res2_p['thought'])}字 | Answer: {len(res2_p['answer'])}字 ({res2_p['elapsed']:.2f}s)")
+            print(f"Placebo Answer:\n{res2_p['answer']}")
             
-            res2 = run_turn(model, tokenizer, messages, steer_vec=v_clarity, alpha=1.2)
-            print(f"注入後 Thinking文字数: {len(res2['thought'])}字 ({res2['elapsed']:.2f}s)")
-            print(f"注入後 Answer:\n{res2['answer']}")
+            print("\n>>> 【第2ターンB: 実薬】第26層に Clarity (α=1.2) をマウントして思考を再起動...")
+            res2_a = run_turn(model, tokenizer, t_msg, steer_vec=v_clarity, alpha=1.2, max_tokens=2500)
+            print(f"Active完走: {res2_a['finished']} | Thinking: {len(res2_a['thought'])}字 | Answer: {len(res2_a['answer'])}字 ({res2_a['elapsed']:.2f}s)")
+            print(f"Active Answer:\n{res2_a['answer']}")
             
         print("\n" + "-"*80)
 
 if __name__ == "__main__":
     main()
-

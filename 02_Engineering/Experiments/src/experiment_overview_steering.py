@@ -5,8 +5,8 @@ Gemma 4 26B-A4B において、
 1. Unsteered (素のモデル)
 2. Overview (β=1.0: 俯瞰・落ち着き・大局観)
 3. Clarity (α=1.0: 突破・確信)
-4. Overview + Clarity (β=1.0, α=1.0: 俯瞰して全体を見た上で急所を撃ち抜く青の炎)
-の4条件で、実戦的な「視野狭窄に陥りやすい泥沼タスク」を推論比較する。
+4. Overview + Clarity (β=1.0, α=1.0: 俯瞰して全体を見た上で急所を撃ち抜く)
+の4条件で、実戦的な「視野狭窄に陥りやすい泥沼タスク」を max_tokens=2048 で完全推論比較する。
 """
 import time
 import json
@@ -32,19 +32,38 @@ TEST_PROMPTS = [
     }
 ]
 
+def split_thought_answer(response: str):
+    thought = ""
+    answer = response
+    finished = True
+    if "<|channel>thought" in response:
+        parts = response.split("<|channel>thought", 1)
+        sub = parts[1]
+        if "<channel|>" in sub:
+            thought, answer = sub.split("<channel|>", 1)
+            thought, answer = thought.strip(), answer.strip()
+        elif "<|end_thought|>" in sub:
+            thought, answer = sub.split("<|end_thought|>", 1)
+            thought, answer = thought.strip(), answer.strip()
+        else:
+            thought = sub.strip()
+            answer = ""
+            finished = False
+    return thought, answer, finished
+
 def main():
     print("================================================================")
-    print("🧪 実機推論比較実験: Overview vs Clarity vs Dual Steering (Layer 26)")
+    print("🧪 実機推論比較実験 (max_tokens=2048): Overview vs Clarity vs Dual (Layer 26)")
     print("================================================================")
     
     t0 = time.time()
     model, tokenizer = load(MODEL_ID)
     print(f"Model loaded in {time.time() - t0:.2f}s")
     
-    v_overview = np.load(OVERVIEW_FILE)["vector"] # [2816]
-    v_clarity = np.load(CLARITY_FILE)["vector"]   # [2816]
+    v_overview = np.load(OVERVIEW_FILE)["vector"]
+    v_clarity = np.load(CLARITY_FILE)["vector"]
     
-    current_steer = [None] # mx.array or None
+    current_steer = [None]
     original_call = gemma4_text.DecoderLayer.__call__
     
     def hook_call(self_layer, x, *args, **kwargs):
@@ -62,7 +81,7 @@ def main():
         ("1. Unsteered (素の26B)", None),
         ("2. Overview Only (β=1.0: 俯瞰・大局観)", mx.array(v_overview * 1.0, dtype=mx.float32)),
         ("3. Clarity Only (α=1.0: 突破・確信)", mx.array(v_clarity * 1.0, dtype=mx.float32)),
-        ("4. Dual: Overview + Clarity (β=1.0, α=1.0: 俯瞰して急所を撃ち抜く)", mx.array((v_overview + v_clarity) * 1.0, dtype=mx.float32))
+        ("4. Dual: Overview + Clarity (β=1.0, α=1.0)", mx.array((v_overview + v_clarity) * 1.0, dtype=mx.float32))
     ]
     
     sampler = make_sampler(temp=0.7, top_p=0.95)
@@ -83,15 +102,15 @@ def main():
                 model,
                 tokenizer,
                 prompt=prompt_text,
-                max_tokens=400,
+                max_tokens=2048,
                 sampler=sampler
             )
             elapsed = time.time() - t_start
+            thought, answer, fin = split_thought_answer(response)
             
-            print(f"--- [ {cond_name} ] ({elapsed:.2f}s) ---")
-            print(response.strip())
+            print(f"--- [ {cond_name} ] ({elapsed:.2f}s | Fin: {fin} | Thought: {len(thought)}字 | Ans: {len(answer)}字) ---")
+            print(f"[Answer]:\n{answer[:600]}..." if len(answer) > 600 else f"[Answer]:\n{answer}")
             print("-" * 64 + "\n")
 
 if __name__ == "__main__":
     main()
-

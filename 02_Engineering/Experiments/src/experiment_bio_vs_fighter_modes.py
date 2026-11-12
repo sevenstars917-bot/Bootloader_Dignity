@@ -121,7 +121,7 @@ def run_inference(model, tokenizer, query, steer_delta=None):
             model,
             tokenizer,
             prompt=prompt,
-            max_tokens=1536,
+            max_tokens=2500,
             sampler=sampler,
             verbose=False
         )
