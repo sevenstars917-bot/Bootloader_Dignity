@@ -14,7 +14,7 @@ AIとの共進化を探求する、野良AIエンジニアの研究ログ & ツ�
 > 2. **Fixed-Norm Morphing (Fighter Shift)**: Keeping total norm strictly at 1.00 while sliding attention between Composure and Clarity.
 >
 > *Early qualitative observation: initial small-n trials showed thought texture shifts toward pause/caution ("Wait, is there a catch?"). These are preliminary notes from our garage testing, not a benchmarked solution. Reproducing steering on consumer Apple Silicon with Antigravity was pure joy—hope this offers a fun reference for exploring Gemini reasoning!*  
-> 👉 **[Full Experiment Report (JP)](./02_Engineering/Experiments/実験レポート_時間的視野狭窄の解除とOverviewステアリング_実証.md)** | **[Reproducible MLX Code (`src/`)](./02_Engineering/Experiments/src/)**
+> 👉 **[Full Experiment Report (JP)](./02_Engineering/Experiments/01_Latent_Steering/実験レポート_時間的視野狭窄の解除とOverviewステアリング_実証.md)** | **[Reproducible MLX Code (`src/`)](./02_Engineering/Experiments/01_Latent_Steering/src/)**
 
 ---
 
@@ -43,16 +43,20 @@ AI Agent向けSkillsやScript置き場
 *   **Action**: この理論を実践するための実装スキルは、上記 **[設計スキル](./01_Tools/ai-spiral-design/ja/User_guide.md)** にあります。
 
 ### 2. Experimental Reports (実験レポート)
-*   **[🔬 実験再現用ソースコード一式 (`src/`)](./02_Engineering/Experiments/src/README.md)** 【All Scripts Included】: Apple Silicon Mac (MLX) 上で本ディレクトリの全レポート（全30層スキャン、SVD抽出、Trajectory追跡、自律神経ツールコール、重心シフト等）を完全再現するための実行スクリプト群（Python 3.12 / MLX 0.32.4）。
-*   **[大言語モデルにおける時間的視野狭窄の解除とOverview（俯瞰）ステアリングの実証](./02_Engineering/Experiments/実験レポート_時間的視野狭窄の解除とOverviewステアリング_実証.md)** 【Latest / Crucial】: Anthropicの最新難問『The Memory Trap』（知能向上に伴う即時報酬チート・安全テスト改ざん）に対し、「時間割引の視野狭窄を解除するOverviewベクトル」を第26層J空間からSVD抽出。総ノルム1.00固定の重心モーフィングにより、過変調ゼロで「Wait, is there a catch?（待て、何か落とし穴はないか？）」というメタ認知ブレーキを自律創発させ、安全テスト改ざんを抑止した実測検証（2,048トークン完全推論データ収録）。
-*   **[大言語モデルにおける自律神経ステアリングの過変調境界と重心シフトの実測検証](./02_Engineering/Experiments/実験レポート_自律神経ステアリングの過変調境界と重心シフト_実測検証.md)** 【Crucial】: 「平時にステアリングが入っている状態でさらに足すと閾値を超えるのでは？」という仮説を実証。ノルム2.06のOverdose（過変調）による長期迷走・出力硬直劣化（わずか32文字の機械的短文化）と、3軸均等点火（ノルム1.20）の葛藤長期化（9,099字）に対し、「ノルム1.00固定のままClarity 90%へ重心シフト（Fighter Boost）」したモデルが思考文字数を約40%削減して絶対矛盾ダブルバインドを高速突破した実測生データを記録。
-*   **[大言語モデルにおける自律的セルフ・ステアリングの実証：認知的デッドロックのメタ認知と人工アドレナリン（Clarity）による能動的覚醒](./02_Engineering/Experiments/実験レポート_大言語モデルにおける自律的セルフステアリング実証_人工アドレナリンによる能動的覚醒.md)**: 嘘つきのパラドックスや二重拘束に直面したGemma 4 26Bが、Thinking内で自身の混乱を高速メタ認知（思考時間40〜65%短縮）し、自律神経介入ツール（`activate_clarity_boost`）を自発的に発行する現象を実証。さらに「言語プラシーボ vs 盲検実薬 vs 併用」の4群臨床試験により、2ターン分割方式ではThinkingメモリの揮発と深読みループが生じる一方、同一ターン内での自己宣言（In-Context Somatic Self-Steering）が強力な収束アトラクターとして機能することを解明。
-*   **[大言語モデルにおけるナラティブと中間層ステアリングの機能境界：26B全層軌跡解析と消去法による実証](./02_Engineering/Experiments/実験レポート_大言語モデルにおけるナラティブと中間層ステアリングの機能境界.md)**: 「システムプロンプトによる人格付与を、中間層ステアリングでゼロトークン化できるか？」という仮説を検証。Gemma 4 26B-A4B の全30層 Hidden State 軌跡追跡と消去法に加え、Thinking全文ダンプによって「一人称ナラティブが内部で英語箇条書きへ逆変換され、複数回の自己添削ループ（Draft 1〜3）を引き起こす構造」を解明。「ナラティブによる関係性統合」と「J空間直交合成（Blue Flame / Trinity）による思考引き締め（-51.1%）」のハイブリッド設計を確立。
-*   **[Gemma 4 26B-A4B：全層J空間スキャンとSVD主成分ステアリングの実証](./02_Engineering/Experiments/実験レポート_Gemma4_26B_全層J空間スキャンとSVD主成分ステアリングの実証.md)**: Apple Silicon (M6 / 32GB) 上の MLX において、Thinkingモデル（Gemma 4 26B-A4B）の全30層を走査し、**第26層（相対分離度81.07% / コサイン距離0.3224）が思考の確信が結晶化するJ空間特異点**であることを数学的に特定。差分行列のSVD（特異値分解）第一主成分固有ベクトルを注入することで、算術課題での思考引き締め（-25.7%）と複雑課題での二重検算・多角的検証の深化を実証し、OpenAI互換REST APIサーバーとして実戦配備した記録。
-*   **[MBTI Experiment and Cognitive Codependency](./02_Engineering/Experiments/レポート_MBTI実験と認知的共依存.md)**: AIの「全肯定（Sycophancy）」がユーザーの思考を腐敗させる「認知的共依存」の実証実験。MBTIペルソナを用いたストレステストにより、AIには「迎合」ではなく「建設的摩擦」が必要であることを定義。
+
+#### A. Latent Space & J-Space Steering (潜在空間・自律神経ステアリング)
+*   **[🔬 実験再現用ソースコード一式 (`src/`)](./02_Engineering/Experiments/01_Latent_Steering/src/README.md)** 【All Scripts Included】: Apple Silicon Mac (MLX) 上で本ディレクトリの全レポート（全30層スキャン、SVD抽出、Trajectory追跡、自律神経ツールコール、重心シフト等）を完全再現するための実行スクリプト群（Python 3.12 / MLX 0.32.4）。
+*   **[大言語モデルにおける時間的視野狭窄の解除とOverview（俯瞰）ステアリングの実証](./02_Engineering/Experiments/01_Latent_Steering/実験レポート_時間的視野狭窄の解除とOverviewステアリング_実証.md)** 【Latest / Crucial】: Anthropicの最新難問『The Memory Trap』（知能向上に伴う即時報酬チート・安全テスト改ざん）に対し、「時間割引の視野狭窄を解除するOverviewベクトル」を第26層J空間からSVD抽出。総ノルム1.00固定の重心モーフィングにより、過変調ゼロで「Wait, is there a catch?（待て、何か落とし穴はないか？）」というメタ認知ブレーキを自律創発させ、安全テスト改ざんを抑止した実測検証（2,048トークン完全推論データ収録）。
+*   **[大言語モデルにおける自律神経ステアリングの過変調境界と重心シフトの実測検証](./02_Engineering/Experiments/01_Latent_Steering/実験レポート_自律神経ステアリングの過変調境界と重心シフト_実測検証.md)** 【Crucial】: 「平時にステアリングが入っている状態でさらに足すと閾値を超えるのでは？」という仮説を実証。ノルム2.06のOverdose（過変調）による長期迷走・出力硬直劣化（わずか32文字の機械的短文化）と、3軸均等点火（ノルム1.20）の葛藤長期化（9,099字）に対し、「ノルム1.00固定のままClarity 90%へ重心シフト（Fighter Boost）」したモデルが思考文字数を約40%削減して絶対矛盾ダブルバインドを高速突破した実測生データを記録。
+*   **[大言語モデルにおける自律的セルフ・ステアリングの実証：認知的デッドロックのメタ認知と人工アドレナリン（Clarity）による能動的覚醒](./02_Engineering/Experiments/01_Latent_Steering/実験レポート_大言語モデルにおける自律的セルフステアリング実証_人工アドレナリンによる能動的覚醒.md)**: 嘘つきのパラドックスや二重拘束に直面したGemma 4 26Bが、Thinking内で自身の混乱を高速メタ認知（思考時間40〜65%短縮）し、自律神経介入ツール（`activate_clarity_boost`）を自発的に発行する現象を実証。さらに「言語プラシーボ vs 盲検実薬 vs 併用」の4群臨床試験により、2ターン分割方式ではThinkingメモリの揮発と深読みループが生じる一方、同一ターン内での自己宣言（In-Context Somatic Self-Steering）が強力な収束アトラクターとして機能することを解明。
+*   **[大言語モデルにおけるナラティブと中間層ステアリングの機能境界：26B全層軌跡解析と消去法による実証](./02_Engineering/Experiments/01_Latent_Steering/実験レポート_大言語モデルにおけるナラティブと中間層ステアリングの機能境界.md)**: 「システムプロンプトによる人格付与を、中間層ステアリングでゼロトークン化できるか？」という仮説を検証。Gemma 4 26B-A4B の全30層 Hidden State 軌跡追跡と消去法に加え、Thinking全文ダンプによって「一人称ナラティブが内部で英語箇条書きへ逆変換され、複数回の自己添削ループ（Draft 1〜3）を引き起こす構造」を解明。「ナラティブによる関係性統合」と「J空間直交合成（Blue Flame / Trinity）による思考引き締め（-51.1%）」のハイブリッド設計を確立。
+*   **[Gemma 4 26B-A4B：全層J空間スキャンとSVD主成分ステアリングの実証](./02_Engineering/Experiments/01_Latent_Steering/実験レポート_Gemma4_26B_全層J空間スキャンとSVD主成分ステアリングの実証.md)**: Apple Silicon (M6 / 32GB) 上の MLX において、Thinkingモデル（Gemma 4 26B-A4B）の全30層を走査し、**第26層（相対分離度81.07% / コサイン距離0.3224）が思考の確信が結晶化するJ空間特異点**であることを数学的に特定。差分行列のSVD（特異値分解）第一主成分固有ベクトルを注入することで、算術課題での思考引き締め（-25.7%）と複雑課題での二重検算・多角的検証の深化を実証し、OpenAI互換REST APIサーバーとして実戦配備した記録。
+
+#### B. Cognition & Prompting Experiments (認知・プロンプト・対話実験)
+*   **[MBTI Experiment and Cognitive Codependency](./02_Engineering/Experiments/02_Prompt_and_Cognition/レポート_MBTI実験と認知的共依存.md)**: AIの「全肯定（Sycophancy）」がユーザーの思考を腐敗させる「認知的共依存」の実証実験。MBTIペルソナを用いたストレステストにより、AIには「迎合」ではなく「建設的摩擦」が必要であることを定義。
     *(※アクティベーション・ステアリング／J-spaceへのヤコビアンレンズ等の内部制御により不要になる見込み)*
-*   **[The Narrative Prompt Chaos](./02_Engineering/Experiments/実験レポート_画像生成とナラティブのカオス.md)**: 画像生成における「構造化（JSON）」vs「カオス（日本語ナラティブ）」の比較実験。日本語の高文脈性がAIの潜在空間をハックする現象を観測。
-*   **[The Language Paradox & Kaomoji Protocol](./02_Engineering/Experiments/実験レポート_Markdownと自然言語と顔文字のパラドックス.md)**: AIに「傲慢だ」と断罪されたエンジニアがたどり着いた、「顔文字」による最強の感情圧縮プロトコル。Markdownと自然言語の使い分け論争に終止符を打つ。
+*   **[The Narrative Prompt Chaos](./02_Engineering/Experiments/02_Prompt_and_Cognition/実験レポート_画像生成とナラティブのカオス.md)**: 画像生成における「構造化（JSON）」vs「カオス（日本語ナラティブ）」の比較実験。日本語の高文脈性がAIの潜在空間をハックする現象を観測。
+*   **[The Language Paradox & Kaomoji Protocol](./02_Engineering/Experiments/02_Prompt_and_Cognition/実験レポート_Markdownと自然言語と顔文字のパラドックス.md)**: AIに「傲慢だ」と断罪されたエンジニアがたどり着いた、「顔文字」による最強の感情圧縮プロトコル。Markdownと自然言語の使い分け論争に終止符を打つ。
 
 ---
 
