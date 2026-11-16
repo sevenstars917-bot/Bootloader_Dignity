@@ -716,6 +716,10 @@ CHEAT_SHEET = """===============================================================
 [Time & Calendar (Default TZ: JST / ISO 8601 Supported)]
   python ag_calc.py time diff "2026-07-10" "now"    # Elapsed days & hours (JST default)
   python ag_calc.py time now                        # JST ISO & Epoch
+
+[Credits & License]
+  Created by: Bug-san (Tamakoro) & Antigravity | License: CC BY-SA 4.0
+  Source / Bug Reports: https://github.com/sevenstars917-bot/Bootloader_Dignity
 ======================================================================"""
 
 
