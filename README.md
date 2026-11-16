@@ -45,6 +45,8 @@ AI Agent向けSkillsやScript置き場
 ### 2. Experimental Reports (実験レポート)
 
 #### A. Latent Space & J-Space Steering (潜在空間・自律神経ステアリング)
+> **[用語注釈 / Terminology Note (2026-11-17)]**  
+> 本シリーズの実験レポート内で使用している **`Clarity`** という呼称は検証初期のタグ付けであり、後続の Logit Lens 解析および第26層時系列観測により、その実体は「明晰さ（見通しの良さ）」ではなく **「疑念を閉じて結論へ収束させる『確証（Certainty / Confirmation）』」** に近いベクトルであることが判明しています。再現コードとの対応関係維持のため識別子としての `Clarity` は残していますが、読解時は「確証・収束軸」としてお読みください。
 *   **[🔬 実験再現用ソースコード一式 (`src/`)](./02_Engineering/Experiments/01_Latent_Steering/src/README.md)** 【All Scripts Included】: Apple Silicon Mac (MLX) 上で本ディレクトリの全レポート（全30層スキャン、SVD抽出、Trajectory追跡、自律神経ツールコール、重心シフト等）を完全再現するための実行スクリプト群（Python 3.12 / MLX 0.32.4）。
 *   **[大言語モデルにおける時間的視野狭窄の解除とOverview（俯瞰）ステアリングの実証](./02_Engineering/Experiments/01_Latent_Steering/実験レポート_時間的視野狭窄の解除とOverviewステアリング_実証.md)** 【Latest / Crucial】: Anthropicの最新難問『The Memory Trap』（知能向上に伴う即時報酬チート・安全テスト改ざん）に対し、「時間割引の視野狭窄を解除するOverviewベクトル」を第26層J空間からSVD抽出。総ノルム1.00固定の重心モーフィングにより、過変調ゼロで「Wait, is there a catch?（待て、何か落とし穴はないか？）」というメタ認知ブレーキを自律創発させ、安全テスト改ざんを抑止した実測検証（2,048トークン完全推論データ収録）。
 *   **[大言語モデルにおける自律神経ステアリングの過変調境界と重心シフトの実測検証](./02_Engineering/Experiments/01_Latent_Steering/実験レポート_自律神経ステアリングの過変調境界と重心シフト_実測検証.md)** 【Crucial】: 「平時にステアリングが入っている状態でさらに足すと閾値を超えるのでは？」という仮説を実証。ノルム2.06のOverdose（過変調）による長期迷走・出力硬直劣化（わずか32文字の機械的短文化）と、3軸均等点火（ノルム1.20）の葛藤長期化（9,099字）に対し、「ノルム1.00固定のままClarity 90%へ重心シフト（Fighter Boost）」したモデルが思考文字数を約40%削減して絶対矛盾ダブルバインドを高速突破した実測生データを記録。

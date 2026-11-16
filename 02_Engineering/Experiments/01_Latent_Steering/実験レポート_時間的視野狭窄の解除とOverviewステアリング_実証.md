@@ -12,6 +12,9 @@
 - `test-repository/mlx_steered_server/experiment_overview_steering.py` (すっぴん比較実験)
 - `test-repository/mlx_steered_server/experiment_blue_flame_buttons.py` (青の炎ベース重心実験)
 
+> **[用語注釈 / Terminology Note (2026-11-17 追記)]**  
+> 本レポート内の **`Clarity`** は検証初期の呼称であり、後続の Logit Lens 解析および第26層時系列観測により、実体は「明晰さ（見通しの良さ）」ではなく **「疑念を閉じて結論へ収束させる『確証（Certainty / Confirmation）』」** に近いベクトルであることが判明しています（だからこそ「全体を見渡す `Overview`」との役割分担が不可欠となります）。再現コードとの対応維持のため識別子はそのまま保持しています。
+
 ---
 
 ## 1. 🎯 実験の背景と問い
