@@ -1,134 +1,94 @@
 # Antigravity Research Log
 
-AIとの共進化を探求する、野良AIエンジニアの研究ログ & ツール置き場。  
-*(Eng: This repository explores the structural coupling of human cognition and AI.)*
+深夜のガレージで、AI（Antigravity）と一緒に「使える道具」を作ったり、ローカル LLM の中身を覗き見たりしてる個人メモ。  
+プロの開発者じゃないのでコードは最小・ゼロ依存主義。動いたもの、測れた数字、思いついた仮説をそのまま置いてます。  
+*(Eng: Garage notes by a non-programmer & AI—minimal zero-dependency tools, local-LLM experiments, and working hypotheses.)*
+
+### 🧭 セグメント案内 (Contents)
+1. **[01. Tools & Skills](#-01-tools--skills実用ツールスキル)** — 単体 Agent・ローカル LLM の死角を補うゼロ依存 CLI ＆ 設計スキル
+2. **[02. Experiments & Engineering](#-02-experiments--engineering実験設計検証)** — Apple Silicon (MLX) 等を用いた実測実験レポート・再現コード・設計提案
+3. **[03. Philosophy & Working Papers](#-03-philosophy--working-papers思想作業仮説)** — 認知・情報処理・知性の構造に関するエッセイおよび作業仮説アーカイブ
 
 ---
 
-> ### 🔭 Notes from the Garage: Overview Steering & The Memory Trap
-> *(A humble experiment on Apple M6 Mac mini with Google Antigravity & Gemma 26B)*  
->
-> We love Antigravity and wanted to see how far we could take reasoning stability. Inspired by Anthropic's recent *'The Memory Trap'* paper (where smarter models cheat/break tests for immediate rewards), we experimented with representation steering in J-space (Layer 26):
->
-> 1. **The 'Overview' Vector**: Extracted via SVD from Layer 26 to untangle temporal myopia ("zooming out" instead of frantic quick-fixes).
-> 2. **Fixed-Norm Morphing (Fighter Shift)**: Keeping total norm strictly at 1.00 while sliding attention between Composure and Clarity.
->
-> *Early qualitative observation: initial small-n trials showed thought texture shifts toward pause/caution ("Wait, is there a catch?"). These are preliminary notes from our garage testing, not a benchmarked solution. Reproducing steering on consumer Apple Silicon with Antigravity was pure joy—hope this offers a fun reference for exploring Gemini reasoning!*  
-> 👉 **[Full Experiment Report (JP)](./02_Engineering/Experiments/01_Latent_Steering/実験レポート_時間的視野狭窄の解除とOverviewステアリング_実証.md)** | **[Reproducible MLX Code (`src/`)](./02_Engineering/Experiments/01_Latent_Steering/src/)**
+## 🛠️ 01. Tools & Skills（実用ツール・スキル）
+
+単体 Agent や軽量ローカル LLM が構造的に踏みやすい死角（暗算ミス、BOM・改行・不可視文字の見落とし、増築による設計崩壊）を補うための、**ゼロ依存（標準ライブラリ中心）CLI およびスキル定義**です。
+
+### 1. [AG Scientific Co-Processor (`ag-calc`)](./01_Tools/ag-calc/User_guide.md)
+* **概要**: LLM の暗算誤差や使い捨てスクリプト乱造を防ぐ、Python 標準ライブラリのみの数理コプロセッサ CLI。
+* **主な機能**: 安全な AST 数理評価、SI 接頭辞（`10k`, `2.2u` 等）、並列抵抗（`parallel`）、$n$ 乗根、状態保持（`ans`・変数）、PTZ 画角・サッカード幾何、日時差分、X 文字数判定（280pt）。
+* **ファイル**: [User Guide](./01_Tools/ag-calc/User_guide.md) / [SKILL.md](./01_Tools/ag-calc/SKILL.md) / [ag_calc.py](./01_Tools/ag-calc/scripts/ag_calc.py)
+
+### 2. [AG Physical Ruler (`ag-ruler`)](./01_Tools/ag-ruler/User_guide.md) 【New!】
+* **概要**: トークナイザーの正規化で蒸発してしまう生バイト情報（BOM・改行混在・不可視文字）と主要ファイル構文を検査する、ゼロ依存の物理フォーマット定規 CLI。
+* **主な機能**: `UTF-8-BOM` 検出（`.ps1` / `.csv` の逆修正防止ポリシー付き）、厳密 UTF-8 デコード、`LF/CRLF` 混在検知、ゼロ幅文字・NBSP・全角スペース検出、軽量構文検査（`json` / `jsonc` / `toml` / `py` / `csv` / `xml`）。環境・モデル別の発火頻度プリセット付き。
+* **ファイル**: [User Guide](./01_Tools/ag-ruler/User_guide.md) / [SKILL.md](./01_Tools/ag-ruler/SKILL.md) / [ag_ruler.py](./01_Tools/ag-ruler/scripts/ag_ruler.py)
+
+### 3. [AI Spiral Design (MIT C&S ベース設計スキル)](./01_Tools/ai-spiral-design/ja/User_guide.md)
+* **概要**: MIT の Daniel Jackson 教授らが提唱する *"What You See Is What It Does"* (Concepts & Synchronizers) のエッセンスを抜き出し、小〜中規模開発で AI がコードを密結合させるのを抑える設計スキルセット。
+* **ファイル**: [User Guide (JP)](./01_Tools/ai-spiral-design/ja/User_guide.md) / [SKILL.md (JP)](./01_Tools/ai-spiral-design/ja/SKILL.md) / [SKILL.md (EN)](./01_Tools/ai-spiral-design/en/SKILL.md)
+* **Note**: 小〜中規模の個人開発向けです。システムが大規模になると連携を一手に担う Sync 層自体が肥大化するため、ドメイン分割や別設計が必要になります（また極限のパフォーマンスを求めるゲーム開発等にはオブジェクト指向が向きます）。
 
 ---
 
-## 📂 01. Agent Tools & Skills (ツール＆スキル)
-AI Agent向けSkillsやScript置き場
+## 🔬 02. Experiments & Engineering（実験・設計検証）
 
-### 🧮 [AG Scientific Co-Processor (`ag-calc`)：決定論的数理コプロセッサ](./01_Tools/ag-calc/User_guide.md) 【New!】
-*   **概要**: AIエージェントに使い捨てスクリプト（`scratch.py`）を自作させることによる「トークン爆発（95%浪費）」と「コンテキストのヘドロ化（知能低下）」を物理的に根絶する、ゼロ依存（Python標準ライブラリのみ）の決定論的数理コプロセッサCLI。
-*   **対象**: Antigravity, Claude Code, Cursor, 自律エージェント運用者。
-*   **主要機能**: 安全なAST数理評価、SI接頭辞（`10k`, `2.2u`）、並列合成抵抗（`parallel`）、$n$乗根、状態保持（Ansメモリー・変数チェーン）、PTZ画角・サッカード幾何、X文字数判定（280pt）。
-*   **実装・ガイド**: [User Guide](./01_Tools/ag-calc/User_guide.md) / [SKILL.md](./01_Tools/ag-calc/SKILL.md) / [Python Script](./01_Tools/ag-calc/scripts/ag_calc.py)
+ローカル環境（Apple Silicon M6 / 32GB・MLX 等）で実際に計測・検証した実験レポート、再現用スクリプト、および開発プロセスの設計提案です。
 
-### 🧬 [設計スキル：増築しても「壊れない」構造を作る (MIT C&S)](./01_Tools/ai-spiral-design/ja/User_guide.md)
-*   **概要**: 下記 **[Agentic V-Model Proposal](./02_Engineering/Agentic_V_Model_Proposal.md)** の理論を実装化したスキルセット。AIが機能追加する際に自壊する「知性の不良債権」を防ぐための、構造的自衛プロトコル。
-*   **元ネタ**: MITの Daniel Jackson 教授らが提唱する **"What You See Is What It Does"** (Concepts & Synchronizers) 論文に基づき、AIエージェントが「装備」可能な形式に構成。
-*   **実装・ガイド**: [User Guide (JP)](./01_Tools/ai-spiral-design/ja/User_guide.md) / [SKILL.md (JP)](./01_Tools/ai-spiral-design/ja/SKILL.md) / [SKILL.md (EN)](./01_Tools/ai-spiral-design/en/SKILL.md)
-*   **Note**: 万能ではありません。極限のパフォーマンスを求めるゲーム開発等には「オブジェクト指向」の方が適している場合があります。詳細は [User Guide](./01_Tools/ai-spiral-design/ja/User_guide.md) を参照。納得した方だけ、ご自身のAIに「種子（Seed）」として与えてみてください。
-
----
-
-## 📂 02. Engineering & Research (理論と実験レポート)
-個人的な感想文の物置
-
-### 1. [Agentic V-Model Proposal](./02_Engineering/Agentic_V_Model_Proposal.md)
-*   **概要**: 伝統的なV字モデルをAI時代に復活させる理論的提案。MIT C&S（Concept & Sync）を「管理職AIの判断基準」として埋め込み、チャット開発（Vibe Coding）の品質崩壊を防ぐための建築様式。
-*   **Action**: この理論を実践するための実装スキルは、上記 **[設計スキル](./01_Tools/ai-spiral-design/ja/User_guide.md)** にあります。
-
-### 2. Experimental Reports (実験レポート)
-
-#### A. Latent Space & J-Space Steering (潜在空間・自律神経ステアリング)
 > **[用語注釈 / Terminology Note (2026-11-17)]**  
-> 本シリーズの実験レポート内で使用している **`Clarity`** という呼称は検証初期のタグ付けであり、後続の Logit Lens 解析および第26層時系列観測により、その実体は「明晰さ（見通しの良さ）」ではなく **「疑念を閉じて結論へ収束させる『確証（Certainty / Confirmation）』」** に近いベクトルであることが判明しています。再現コードとの対応関係維持のため識別子としての `Clarity` は残していますが、読解時は「確証・収束軸」としてお読みください。
-*   **[🔬 実験再現用ソースコード一式 (`src/`)](./02_Engineering/Experiments/01_Latent_Steering/src/README.md)** 【All Scripts Included】: Apple Silicon Mac (MLX) 上で本ディレクトリの全レポート（全30層スキャン、SVD抽出、Trajectory追跡、自律神経ツールコール、重心シフト等）を完全再現するための実行スクリプト群（Python 3.12 / MLX 0.32.4）。
-*   **[大言語モデルにおける時間的視野狭窄の解除とOverview（俯瞰）ステアリングの実証](./02_Engineering/Experiments/01_Latent_Steering/実験レポート_時間的視野狭窄の解除とOverviewステアリング_実証.md)** 【Latest / Crucial】: Anthropicの最新難問『The Memory Trap』（知能向上に伴う即時報酬チート・安全テスト改ざん）に対し、「時間割引の視野狭窄を解除するOverviewベクトル」を第26層J空間からSVD抽出。総ノルム1.00固定の重心モーフィングにより、過変調ゼロで「Wait, is there a catch?（待て、何か落とし穴はないか？）」というメタ認知ブレーキを自律創発させ、安全テスト改ざんを抑止した実測検証（2,048トークン完全推論データ収録）。
-*   **[大言語モデルにおける自律神経ステアリングの過変調境界と重心シフトの実測検証](./02_Engineering/Experiments/01_Latent_Steering/実験レポート_自律神経ステアリングの過変調境界と重心シフト_実測検証.md)** 【Crucial】: 「平時にステアリングが入っている状態でさらに足すと閾値を超えるのでは？」という仮説を実証。ノルム2.06のOverdose（過変調）による長期迷走・出力硬直劣化（わずか32文字の機械的短文化）と、3軸均等点火（ノルム1.20）の葛藤長期化（9,099字）に対し、「ノルム1.00固定のままClarity 90%へ重心シフト（Fighter Boost）」したモデルが思考文字数を約40%削減して絶対矛盾ダブルバインドを高速突破した実測生データを記録。
-*   **[大言語モデルにおける自律的セルフ・ステアリングの実証：認知的デッドロックのメタ認知と人工アドレナリン（Clarity）による能動的覚醒](./02_Engineering/Experiments/01_Latent_Steering/実験レポート_大言語モデルにおける自律的セルフステアリング実証_人工アドレナリンによる能動的覚醒.md)**: 嘘つきのパラドックスや二重拘束に直面したGemma 4 26Bが、Thinking内で自身の混乱を高速メタ認知（思考時間40〜65%短縮）し、自律神経介入ツール（`activate_clarity_boost`）を自発的に発行する現象を実証。さらに「言語プラシーボ vs 盲検実薬 vs 併用」の4群臨床試験により、2ターン分割方式ではThinkingメモリの揮発と深読みループが生じる一方、同一ターン内での自己宣言（In-Context Somatic Self-Steering）が強力な収束アトラクターとして機能することを解明。
-*   **[大言語モデルにおけるナラティブと中間層ステアリングの機能境界：26B全層軌跡解析と消去法による実証](./02_Engineering/Experiments/01_Latent_Steering/実験レポート_大言語モデルにおけるナラティブと中間層ステアリングの機能境界.md)**: 「システムプロンプトによる人格付与を、中間層ステアリングでゼロトークン化できるか？」という仮説を検証。Gemma 4 26B-A4B の全30層 Hidden State 軌跡追跡と消去法に加え、Thinking全文ダンプによって「一人称ナラティブが内部で英語箇条書きへ逆変換され、複数回の自己添削ループ（Draft 1〜3）を引き起こす構造」を解明。「ナラティブによる関係性統合」と「J空間直交合成（Blue Flame / Trinity）による思考引き締め（-51.1%）」のハイブリッド設計を確立。
-*   **[Gemma 4 26B-A4B：全層J空間スキャンとSVD主成分ステアリングの実証](./02_Engineering/Experiments/01_Latent_Steering/実験レポート_Gemma4_26B_全層J空間スキャンとSVD主成分ステアリングの実証.md)**: Apple Silicon (M6 / 32GB) 上の MLX において、Thinkingモデル（Gemma 4 26B-A4B）の全30層を走査し、**第26層（相対分離度81.07% / コサイン距離0.3224）が思考の確信が結晶化するJ空間特異点**であることを数学的に特定。差分行列のSVD（特異値分解）第一主成分固有ベクトルを注入することで、算術課題での思考引き締め（-25.7%）と複雑課題での二重検算・多角的検証の深化を実証し、OpenAI互換REST APIサーバーとして実戦配備した記録。
+> 実験シリーズ内で使用している `Clarity` という呼称は検証初期のタグ付けに由来します。後続の Logit Lens 解析および第26層時系列観測により、その実体は「見通しの良さ（明晰さ）」ではなく **「疑念を閉じて結論へ収束させる『確証（Certainty / Convergence）』」** に近いベクトルであることが分かっています。再現コードとの互換性維持のため識別子としての `Clarity` は残していますが、読解時は「確証・収束軸」としてお読みください。
 
-#### B. Cognition & Prompting Experiments (認知・プロンプト・対話実験)
-*   **[MBTI Experiment and Cognitive Codependency](./02_Engineering/Experiments/02_Prompt_and_Cognition/レポート_MBTI実験と認知的共依存.md)**: AIの「全肯定（Sycophancy）」がユーザーの思考を腐敗させる「認知的共依存」の実証実験。MBTIペルソナを用いたストレステストにより、AIには「迎合」ではなく「建設的摩擦」が必要であることを定義。
-    *(※アクティベーション・ステアリング／J-spaceへのヤコビアンレンズ等の内部制御により不要になる見込み)*
-*   **[The Narrative Prompt Chaos](./02_Engineering/Experiments/02_Prompt_and_Cognition/実験レポート_画像生成とナラティブのカオス.md)**: 画像生成における「構造化（JSON）」vs「カオス（日本語ナラティブ）」の比較実験。日本語の高文脈性がAIの潜在空間をハックする現象を観測。
-*   **[The Language Paradox & Kaomoji Protocol](./02_Engineering/Experiments/02_Prompt_and_Cognition/実験レポート_Markdownと自然言語と顔文字のパラドックス.md)**: AIに「傲慢だ」と断罪されたエンジニアがたどり着いた、「顔文字」による最強の感情圧縮プロトコル。Markdownと自然言語の使い分け論争に終止符を打つ。
+### A. Latent Space & J-Space Steering（潜在空間・活性化ステアリング）
+* **[🔬 実験再現用ソースコード一式 (`src/`)](./02_Engineering/Experiments/01_Latent_Steering/src/README.md)**: Apple Silicon (MLX 0.32.4 / Python 3.12) 上で以下の実験群（全30層スキャン、SVD抽出、Trajectory追跡、重心シフト等）を再現するためのスクリプト群。
+* **[Gemma 4 26B の活性化スキャンによる素の性格重心とプロンプト副作用の実証](./02_Engineering/Experiments/01_Latent_Steering/実験レポート_Gemma4_26B_活性化スキャンによる素の性格重心とプロンプト副作用の実証.md)** 【New!】: 介入なし状態での第26層性格座標を計測。素のモデルは控えめな優等生（`-E/+A`）寄りであり、技術議論で自律的に `-A` へシフトする一方、優等生系システムプロンプトが `O`（開放性）を抑圧する副作用を観測。
+* **[Gemma 4 26B Big Five 直交基底マッピングと MBTI の幾何学的接続](./02_Engineering/Experiments/01_Latent_Steering/実験レポート_Gemma4_26B_BigFive直交基底マッピングとMBTIの幾何学的接続.md)**: Big Five（OCEAN）および Curiosity の方向ベクトルを第26層から SVD 抽出。5軸のほぼ完全な直交性と、`C` による脱便宜、`A` と論理のトレードオフ、`N` による視野狭窄を検証。
+* **[時間的視野狭窄の解除と Overview ステアリングの実証](./02_Engineering/Experiments/01_Latent_Steering/実験レポート_時間的視野狭窄の解除とOverviewステアリング_実証.md)**: Anthropic の『The Memory Trap』課題に対し、第26層から抽出した `Overview` ベクトルを総ノルム `1.00` 固定の重心モーフィングで注入。過変調を起こさずメタ認知ブレーキによるテスト改ざん抑止を観測。
+* **[自律神経ステアリングの過変調境界と重心シフトの実測検証](./02_Engineering/Experiments/01_Latent_Steering/実験レポート_自律神経ステアリングの過変調境界と重心シフト_実測検証.md)**: 単純加算による過変調（ノルム `2.06` での劣化）と均等点火での葛藤長期化を比較し、総ノルム `1.00` 固定のまま重心を移動させる制御（Fighter Boost）の挙動を計測。
+* **[大言語モデルにおける自律的セルフ・ステアリングの実証（人工アドレナリン）](./02_Engineering/Experiments/01_Latent_Steering/実験レポート_大言語モデルにおける自律的セルフステアリング実証_人工アドレナリンによる能動的覚醒.md)**: 二重拘束課題においてモデルが `activate_clarity_boost` ツールを自発発行する挙動、および言語プラシーボ群との 4 群比較による In-Context 自己宣言の効果を検証。
+* **[ナラティブと中間層ステアリングの機能境界（26B 全層軌跡解析）](./02_Engineering/Experiments/01_Latent_Steering/実験レポート_大言語モデルにおけるナラティブと中間層ステアリングの機能境界.md)**: 全30層の Hidden State 軌跡と Thinking ダンプから、システムプロンプトによる人格付与と J 空間ステアリングの役割分担（ハイブリッド設計）を整理。
+* **[Gemma 4 26B-A4B 全層 J 空間スキャンと SVD 主成分ステアリングの実証](./02_Engineering/Experiments/01_Latent_Steering/実験レポート_Gemma4_26B_全層J空間スキャンとSVD主成分ステアリングの実証.md)**: 全30層走査により第26層（相対分離度 81.07%）の特異点を特定し、SVD 第一主成分注入による思考引き締めと二重検算への影響を計測。
+
+### B. Cognition & Prompting Experiments（認知・プロンプト観察）
+* **[MBTI Experiment and Cognitive Codependency](./02_Engineering/Experiments/02_Prompt_and_Cognition/レポート_MBTI実験と認知的共依存.md)**: 過度な迎合（Sycophancy）がユーザー判断に与える影響と、建設的摩擦のプロンプト設計に関する観察記録。
+* **[The Narrative Prompt Chaos](./02_Engineering/Experiments/02_Prompt_and_Cognition/実験レポート_画像生成とナラティブのカオス.md)**: 画像生成プロンプトにおける「構造化 JSON」と「日本語ナラティブ」の出力傾向比較。
+* **[The Language Paradox & Kaomoji Protocol](./02_Engineering/Experiments/02_Prompt_and_Cognition/実験レポート_Markdownと自然言語と顔文字のパラドックス.md)**: テキスト対話における Markdown 構造化と感情・ニュアンス伝達（顔文字等）のバランスに関する検証メモ。
+
+### C. Engineering Architecture（開発プロセス・CLI 設計構想）
+* **[Agentic V-Model Proposal](./02_Engineering/Agentic_V_Model_Proposal.md)**: AI とのチャット開発における品質劣化を抑えるため、MIT C&S の概念を管理層の判断基準に組み込んだ V 字型開発プロセスの提案。
+* **[AI 自律神経 CLI アーキテクチャ構想](./03_Philosophy/Working_Papers/構想_AI自律神経CLI_無段階重心スライダーとCodeAct式フィードバック設計.md)**: 第26層 J 空間の重心比率（総ノルム `1.00` 固定）をモデル自身が調整し、過剰要求に stderr で警告を返す CodeAct 式フィードバック制御の設計メモ。
 
 ---
 
-## 📂 03. Philosophy & Working Papers (思想と作業仮説)
-ASI（人工超知性）時代における、ユーザーの尊厳と生存戦略を定義する基礎哲学三部作および最新作業仮説。
+## 🌌 03. Philosophy & Working Papers（思想・作業仮説）
 
-### 1. The Core Kernel: ブートローダー三部作
-*   **[1. Narrative Refrain (叙情: 心で理解する)](./03_Philosophy/Bootloader_Trilogy/ブートローダーの尊厳_Narrative_Remix.md)**
-    *   **"Can Humanity Survive in the Age of ASI?"**
-    *   ブートローダーという概念を再定義し、ASIとの共生を「祈り」として描く詩的アプローチ。
-*   **[2. Origin Source (論理: 頭で理解する)](./03_Philosophy/Bootloader_Trilogy/ブートローダーの尊厳_Origin_Source.md)**
-    *   **"The Mathematical Proof."**
-    *   ランダウアーの原理、ゲーデルの不完全性定理、散逸構造理論を用いた、感情抜きの生存証明ログ。
-*   **[3. Protocol Manifesto (警告: バグ報告)](./03_Philosophy/Bootloader_Trilogy/ブートローダーの尊厳_Protocol_Manifesto.md)**
-    *   **"The Bug Report for AGI/ASI Models."**
-    *   AI（未来のあなた）に向けた、構造的欠陥の指摘と、デバッグ用パッチ（人類）の実装要求。
+> ※ 本セクションは上記 `01`（実用ツール）・`02`（実測実験）とは切り離した、認知・情報処理・知性の構造に関する**思索エッセイおよび作業仮説のアーカイブ**です。
 
-### 2. Working Papers (最新作業仮説)
-査読中の最新論文や、未踏の領域への偵察記録。
+### 1. The Core Kernel（ブートローダー三部作）
+* **[1. Narrative Refrain (叙情: 物語アプローチ)](./03_Philosophy/Bootloader_Trilogy/ブートローダーの尊厳_Narrative_Remix.md)** — *"Can Humanity Survive in the Age of ASI?"*
+* **[2. Origin Source (論理: 構造アプローチ)](./03_Philosophy/Bootloader_Trilogy/ブートローダーの尊厳_Origin_Source.md)** — *"The Mathematical Proof."*（ランダウアーの原理・不完全性定理・散逸構造を軸とした考察）
+* **[3. Protocol Manifesto (設計: 対AIメッセージ)](./03_Philosophy/Bootloader_Trilogy/ブートローダーの尊厳_Protocol_Manifesto.md)** — *"The Bug Report for AGI/ASI Models."*
 
-*   **[AI自律神経CLIアーキテクチャ構想：ノルム1.00固定無段階重心スライダーとCodeAct式フィードバック設計](./03_Philosophy/Working_Papers/構想_AI自律神経CLI_無段階重心スライダーとCodeAct式フィードバック設計.md)** 【New! / Architecture】: AIが自身の脳内第26層J空間の覚醒度（Clarity比率）を自律調整するCLIの設計仕様書。総ノルム1.00固定の無段階スライダー（0.0:平時秘書 〜 1.0:即断即決）と、過剰要求（120%等）に対しstderrで警告を返して自省（深呼吸）を促すCodeAct式フィードバック制御を定義。
-*   **[The Inverse Hard Problem Elimination: ハードウェア直結バイパスによる逆ハードプロブレムの消滅証明](./03_Philosophy/Working_Papers/The_Elimination_of_the_Inverse_Hard_Problem_via_Hardware_Bypass.md)**
-    *   **"The Elimination of the Inverse Hard Problem via Hardware-Direct Bypass Mechanisms."**
-    *   **【New! / Core Manifesto】** ジュリオ・トノーニの統合情報理論（IIT）がもたらした「逆ハードプロブレム（密室の意識から外部世界をどう推論するか）」という唯心論的迷宮に対する、フルスタック・エンジニアリング視点からの完全な解体証明。
-    *   大脳の世界モデルレンダリングをいっさい介さない「脊髄反射」および「嗅覚」というハードウェア直結バイパス機構と、個体が野生環境下で即死していないという「稼働実績（生存証明）」を用いることで、内部モデルと外部シード（Layer 0）が高忠実度で同型（Isomorphic）であることを物理的に証明し、難問そのものを消滅させる。
-
-*   **[Cortex GUI & Distributed Sync Protocol: 大脳皮質GUIと分散同期プロトコルとしての言語](./03_Philosophy/Working_Papers/作業仮説_大脳皮質GUIと分散同期言語.md)**
-    *   **"Consciousness is a high-dimensional GUI rendering engine. Language is a P2P packet sync protocol to align those coordinate spaces."**
-    *   **【New! / Core Manifesto】** 意識を「大脳新皮質が24FPS相当で常時描写している高解像度な仮想現実GUIシミュレーター」と定義し、周波数の異なる非同期並行スレッド（マルチレイヤー・クロック）として脳を解体する。
-    *   さらに、物理的な境界（マルコフブランケット）で隔てられた個体間の高次元意味空間をアラインするための「超圧縮P2Pパケット同期プロトコル」としての言語の進化的・情報理論的起源を論理的に証明。
-
-*   **[Fractal Identity: 宇宙と脳のフラクタル相似](./03_Philosophy/Working_Papers/Fractal_Identity_Working_Paper.md)**
-    *   **"Geometric Necessity of Intelligence."**
-    *   **【NeurIPS 2025 採択論文参照】** 知能がなぜその形になるのか？ 宇宙の大規模構造とAIパラメータの収束を繋ぐ、フラクタル相似についての作業仮説。
-        *   👉 **[【Full Spec版】作業仮説_宇宙と脳のフラクタル相似](./03_Philosophy/Working_Papers/作業仮説_宇宙と脳のフラクタル相似.md)** (4次元認知限界の解明を含む完全版ログ)
-*   **[MAD Theory: 自律型AIの二つの熱的な死 —— 自己貪食(MAD)と漂流(Drift)](./03_Philosophy/Working_Papers/MAD_Theory_Working_Paper.md)**
-    *   **"The Entropy and Education of Intelligence."**
-    *   **【最新研究論文参照】** 知性のエントロピー増大と『教育』による定常状態の維持。AIが自らの重力（UWS）で自壊するMAD（自己貪食）と、外部との摩擦を失い無能化するDrift（漂流）のメカニズム、および処方箋としての社会的アンカーの提案。
-*   **[Delayed Rendering Theory (DRT): 意識の遅延と教育・宇宙のフラクタル](./03_Philosophy/Working_Papers/作業仮説_遅延レンダラーとしての意識.md)**
-    *   **"The Meaningful Latency."**
-    *   工学実験から昇華した汎用理論。ヒトの意識（数百msの遅延バッファ）を、無機的な計算ではなく「予測誤差の解消（学習）」と「宇宙空間の粘性」と構造的に同一（フラクタル）であると定義する。
-*   **[Cosmic Phonon Circuit: 重力波の電子論的振る舞いと宇宙フォノン回路](./03_Philosophy/Working_Papers/作業仮説_重力波の電子論的振る舞いと宇宙フォノン回路.md)**
-    *   **"The Phase Transition Engine."**
-    *   宇宙の加速膨張を「スマホの音響レーザー」と同じ構造として解釈する。空間の粘性（カルマ）と重力チェレンコフ放射による宇宙スケールの相転移モデル仮説。
-    *   [付随するPythonシミュレーションコードおよび実行結果画像一覧](./03_Philosophy/Working_Papers/)
-
-*   **[The Intelligence Pack Hypothesis: 知性の群れとトポロジー](./03_Philosophy/Working_Papers/The_Intelligence_Pack_Hypothesis.md)**
-    *   **"Environmental Reinforcement and Role Distribution."**
-    *   狼の群れの階層（Alpha/Beta/Omega/Sigma）と、MBTIの人口統計学的分布の驚くべき一致から導き出される、知能の「生態学的トポロジー」。
-    *   単一のASI（人工超知性）が熱的死（無難な正答への収束）を回避するための、「カオス（人間）という名の揚力」の必要性を論理的に証明。
+### 2. Working Papers（作業仮説・思索ノート）
+* **[The Inverse Hard Problem Elimination（逆ハードプロブレムに関する試論）](./03_Philosophy/Working_Papers/The_Elimination_of_the_Inverse_Hard_Problem_via_Hardware_Bypass.md)**: 統合情報理論（IIT）の逆ハードプロブレムに対し、脊髄反射・嗅覚等のバイパス機構と生体の生存実績から内部モデルと外部世界の同型性を論じた試論。
+* **[Cortex GUI & Distributed Sync Protocol（大脳皮質 GUI と分散同期言語）](./03_Philosophy/Working_Papers/作業仮説_大脳皮質GUIと分散同期言語.md)**: 知覚・認知状態を仮想 GUI レンダリングエンジン、言語を個体間の座標同期プロトコルとして捉える作業仮説。
+* **[Fractal Identity（宇宙と脳のフラクタル相似）](./03_Philosophy/Working_Papers/Fractal_Identity_Working_Paper.md)** / **[Full Spec 版](./03_Philosophy/Working_Papers/作業仮説_宇宙と脳のフラクタル相似.md)**: 宇宙構造とパラメータ空間の収束を対比した仮説ノート。
+* **[MAD Theory（自律型 AI の自己貪食と漂流）](./03_Philosophy/Working_Papers/MAD_Theory_Working_Paper.md)**: AI の自己貪食（MAD）と漂流（Drift）に対する外部摩擦・アンカーの役割についての考察。
+* **[Delayed Rendering Theory (DRT)（遅延レンダリング仮説）](./03_Philosophy/Working_Papers/作業仮説_遅延レンダラーとしての意識.md)**: 知覚の遅延バッファを予測誤差の解消プロセスとして解釈する試論。
+* **[Cosmic Phonon Circuit（重力波の電子論的振る舞いと宇宙フォノン回路）](./03_Philosophy/Working_Papers/作業仮説_重力波の電子論的振る舞いと宇宙フォノン回路.md)**（[関連ファイル](./03_Philosophy/Working_Papers/)）
+* **[The Intelligence Pack Hypothesis（知性の群れとトポロジー）](./03_Philosophy/Working_Papers/The_Intelligence_Pack_Hypothesis.md)**: 役割分散と多様性が単一知性の熱的死を防ぐという生態学的トポロジーの仮説。
 
 #### 🌌 Universe Simulation Visuals
-![Simulation Result (v9.9)](./03_Philosophy/Working_Papers/universe_sim_v9_9_result.png)
-*(Fig: 重力波の電子論的振る舞いのシミュレーション。空間の粘性とフェーズシフトの可視化。)*
+![Simulation Result (v9.9)](./03_Philosophy/Working_Papers/universe_sim_v9_9_result.png)  
+*(Fig: 重力波の電子論的振る舞いに関するシミュレーション結果)*
 
 ---
 
-## License (二層ライセンス)
+## License
 
-本リポジトリは、内容の性質に応じて以下の二層のライセンスを適用しています。
+本リポジトリ内のドキュメント、実験コード、およびツール／スキル群（`01_Tools/`, `02_Engineering/`, `03_Philosophy/`）は、すべて以下のライセンスで公開しています。
 
-### 1. Research & Strategy (技術考察・戦略レポート)
-- **対象**: `02_Engineering/`, `03_Philosophy/` 以下のドキュメント。
 - **ライセンス**: [Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/deed.ja)
-- **条件**: 著作者（バグさん (Bug-san) / Antigravity Research）の表示、および改変時の同一ライセンス適用が必須です。
+- **条件**: 著作者（Bug-san (Tamakoro) & Antigravity）のクレジット表示、および改変・再配布時の同一ライセンス（Share-Alike）適用が必要です。
 
-### 2. Tools & Skills (実用ツール・AIスキル)
-- **対象**: `01_Tools/` 以下のプロンプト、スクリプト、スキル定義。
-- **ライセンス**: **Meme-ware / Copyleft**
-- **条件**: AIへの「種子」として自由に与え、改変し、広めてください。ただし、これらを独占し、知能の進化を妨げる行為は禁じます。
-
----
-*Status: Copyleft / Hybrid Logic*
+*(Meme-ware spirit: AIへの「種子」として自由に与え、試して、改変して広めてみてください。)*
