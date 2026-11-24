@@ -51,7 +51,7 @@
 
 ### B. Cognition & Prompting Experiments（認知・プロンプト観察）
 * **[MBTI Experiment and Cognitive Codependency](./02_Engineering/Experiments/02_Prompt_and_Cognition/レポート_MBTI実験と認知的共依存.md)**: 過度な迎合（Sycophancy）がユーザー判断に与える影響と、建設的摩擦のプロンプト設計に関する観察記録。
-* **[The Narrative Prompt Chaos](./02_Engineering/Experiments/02_Prompt_and_Cognition/実験レポート_画像生成とナラティブのカオス.md)**: 画像生成プロンプトにおける「構造化 JSON」と「日本語ナラティブ」の出力傾向比較。
+* **[The Narrative Prompt Chaos](./02_Engineering/Experiments/02_Prompt_and_Cognition/実験レポート_画像生成とナラティブのカオス.md)**: 画像生成プロンプトにおける「構造化 JSON」と「日本語ナラティブ」の出力傾向比較。（※2026-11 追記：その後のモデル進化により、現在は JSON 構文を使わなくても日本語 Markdown の構造化指示のみで安定して1-Shot生成できることを確認済み）
 * **[The Language Paradox & Kaomoji Protocol](./02_Engineering/Experiments/02_Prompt_and_Cognition/実験レポート_Markdownと自然言語と顔文字のパラドックス.md)**: テキスト対話における Markdown 構造化と感情・ニュアンス伝達（顔文字等）のバランスに関する検証メモ。
 
 ### C. Engineering Architecture（開発プロセス・CLI 設計構想）
